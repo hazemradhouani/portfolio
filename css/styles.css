@@ -645,6 +645,10 @@ main { padding-top: var(--nav-h); }
   margin-bottom: .9rem;
   padding: .28rem .35rem; margin-left: -.35rem; margin-right: -.35rem;
   border-radius: 3px;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
   transition: background 700ms var(--ease-silk);
 }
 .proj-body p:last-child { margin-bottom: 0; }
@@ -733,9 +737,10 @@ main { padding-top: var(--nav-h); }
 .about__bio-text {
   font-size: .81rem; line-height: 1.78; color: var(--g600);
   margin-bottom: .72rem;
-  /* Left-aligned — no justified rivers on narrow columns */
-  text-align: left;
-  text-wrap: pretty;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
   padding: .26rem .32rem;
   margin-left: -.32rem; margin-right: -.32rem;
   border-radius: 3px;
@@ -777,7 +782,7 @@ main { padding-top: var(--nav-h); }
   font-family: var(--font-m); font-size: .53rem; letter-spacing: .05em;
   text-transform: uppercase; color: var(--g400); display: block; margin-bottom: .42rem;
 }
-.exp-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; }
+.exp-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
 .exp-award {
   display: inline-flex; align-items: center; gap: .28rem;
   font-family: var(--font-m); font-size: .52rem; letter-spacing: .05em; text-transform: uppercase;
@@ -808,7 +813,7 @@ main { padding-top: var(--nav-h); }
   font-family: var(--font-m); font-size: .53rem; letter-spacing: .05em;
   text-transform: uppercase; color: var(--g400); display: block; margin-bottom: .32rem;
 }
-.edu-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; }
+.edu-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
 .edu-mention {
   display: inline-block; font-family: var(--font-m); font-size: .52rem;
   letter-spacing: .05em; text-transform: uppercase;
@@ -1016,6 +1021,17 @@ main { padding-top: var(--nav-h); }
 @media (max-width: 680px) {
   .about__bio-spacer { min-height: .5rem; }
   .about__bio-text   { font-size: .8rem; }
+}
+/* On very narrow screens justify can create ugly rivers — revert to left */
+@media (max-width: 380px) {
+  .proj-body p,
+  .about__bio-text,
+  .exp-note,
+  .edu-note {
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+  }
 }
 
 /* Footer responsive */
