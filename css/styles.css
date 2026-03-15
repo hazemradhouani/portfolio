@@ -645,10 +645,15 @@ main { padding-top: var(--nav-h); }
   margin-bottom: .9rem;
   padding: .28rem .35rem; margin-left: -.35rem; margin-right: -.35rem;
   border-radius: 3px;
-  text-align: justify;
+  /* ── Justified text: every line fills the full column width ── */
+  text-align: justify !important;
+  -webkit-text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
   -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  word-break: normal;
+  overflow-wrap: break-word;
   transition: background 700ms var(--ease-silk);
 }
 .proj-body p:last-child { margin-bottom: 0; }
@@ -737,10 +742,14 @@ main { padding-top: var(--nav-h); }
 .about__bio-text {
   font-size: .81rem; line-height: 1.78; color: var(--g600);
   margin-bottom: .72rem;
-  text-align: justify;
+  /* ── Justified text ── */
+  text-align: justify !important;
   text-justify: inter-word;
   hyphens: auto;
   -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  word-break: normal;
+  overflow-wrap: break-word;
   padding: .26rem .32rem;
   margin-left: -.32rem; margin-right: -.32rem;
   border-radius: 3px;
@@ -782,7 +791,7 @@ main { padding-top: var(--nav-h); }
   font-family: var(--font-m); font-size: .53rem; letter-spacing: .05em;
   text-transform: uppercase; color: var(--g400); display: block; margin-bottom: .42rem;
 }
-.exp-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
+.exp-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; text-align: justify !important; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; -ms-hyphens: auto; overflow-wrap: break-word; }
 .exp-award {
   display: inline-flex; align-items: center; gap: .28rem;
   font-family: var(--font-m); font-size: .52rem; letter-spacing: .05em; text-transform: uppercase;
@@ -813,7 +822,7 @@ main { padding-top: var(--nav-h); }
   font-family: var(--font-m); font-size: .53rem; letter-spacing: .05em;
   text-transform: uppercase; color: var(--g400); display: block; margin-bottom: .32rem;
 }
-.edu-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
+.edu-note { font-size: .74rem; color: var(--g600); line-height: 1.6; display: block; text-align: justify !important; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; -ms-hyphens: auto; overflow-wrap: break-word; }
 .edu-mention {
   display: inline-block; font-family: var(--font-m); font-size: .52rem;
   letter-spacing: .05em; text-transform: uppercase;
