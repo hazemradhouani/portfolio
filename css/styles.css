@@ -1672,7 +1672,7 @@ main { -webkit-overflow-scrolling: touch; }
     left: 50%;
     transform: translateX(-50%) translateY(8px) scale(.88);
     /* Above swipe-hint row with clear gap */
-    bottom: 8rem;
+    bottom: 8.5rem;
   }
   .back-to-top.is-visible {
     transform: translateX(-50%) translateY(0) scale(1) !important;
