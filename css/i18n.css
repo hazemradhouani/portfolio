@@ -1,0 +1,518 @@
+/* ============================================================
+   Hazem Radhouani · Portfolio 2026 · i18n.css v1
+   Language toggle button + RTL layout overrides
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════
+   LANGUAGE TOGGLE — nav bar
+   ══════════════════════════════════════════════════════ */
+.lang-toggle {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: .25rem;
+}
+
+.lang-toggle__btn {
+  display: flex;
+  align-items: center;
+  gap: .28rem;
+  font-family: var(--font-m);
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--g600);
+  padding: .55rem .65rem;
+  border-radius: 3px;
+  border: 1px solid var(--g200);
+  background: none;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 52px;
+  transition: color 280ms var(--ease-silk), border-color 280ms var(--ease-silk),
+              background 280ms var(--ease-silk);
+}
+
+@media (hover: hover) {
+  .lang-toggle__btn:hover {
+    color: var(--black);
+    border-color: var(--g400);
+    background: rgba(13,13,13,.03);
+  }
+}
+
+.lang-toggle__btn:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.lang-toggle__label {
+  font-weight: 400;
+}
+
+.lang-toggle__arrow {
+  width: 9px;
+  height: 5px;
+  flex-shrink: 0;
+  transition: transform 220ms var(--ease-silk);
+}
+
+.lang-toggle.is-open .lang-toggle__arrow {
+  transform: rotate(180deg);
+}
+
+.lang-toggle__menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  min-width: 64px;
+  background: #faf9f7;
+  border: 1px solid var(--g100);
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(13,13,13,.09), 0 1px 4px rgba(13,13,13,.05);
+  list-style: none;
+  padding: .3rem 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-5px);
+  transition: opacity 200ms var(--ease-silk), transform 220ms var(--ease-spring);
+  z-index: 120;
+}
+
+.lang-toggle.is-open .lang-toggle__menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.lang-toggle__option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .8rem;
+  font-family: var(--font-m);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--g600);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 160ms, background 160ms;
+}
+
+@media (hover: hover) {
+  .lang-toggle__option:hover {
+    color: var(--black);
+    background: var(--g80);
+  }
+}
+
+.lang-toggle__option:focus {
+  outline: none;
+  color: var(--black);
+  background: var(--g80);
+}
+
+.lang-toggle__option.is-active {
+  color: var(--accent);
+}
+
+/* ── Hero lang toggle (homepage) ─────────────────────── */
+.hero__lang-wrap {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.hero__lang-btn {
+  font-family: var(--font-m);
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .4rem .7rem;
+  border-radius: 3px;
+  border: 1px solid var(--g200);
+  background: none;
+  cursor: pointer;
+  color: var(--g600);
+  min-height: 44px;
+  min-width: 44px;
+  transition: color 220ms, border-color 220ms, background 220ms;
+}
+
+@media (hover: hover) {
+  .hero__lang-btn:hover {
+    color: var(--black);
+    border-color: var(--g400);
+  }
+}
+
+.hero__lang-btn.is-active {
+  color: var(--accent);
+  border-color: var(--accent-muted);
+}
+
+/* ── Mobile menu lang section ────────────────────────── */
+.mobile-menu__lang {
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  padding: 1.1rem 1.5rem .9rem;
+}
+
+.mobile-menu__lang-btn {
+  font-family: var(--font-m);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .55rem 1.1rem;
+  border-radius: 3px;
+  border: 1px solid var(--g200);
+  background: none;
+  cursor: pointer;
+  color: var(--g600);
+  min-width: 52px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 200ms, border-color 200ms, background 200ms;
+}
+
+.mobile-menu__lang-btn:active {
+  transform: scale(.97);
+}
+
+.mobile-menu__lang-btn.is-active {
+  color: var(--accent);
+  border-color: var(--accent-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   ARABIC FONT VARIABLES
+   ══════════════════════════════════════════════════════ */
+html.lang-ar {
+  --font-d: 'Amiri', 'Times New Roman', serif;
+  --font-b: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+}
+
+/* Override monospace for Arabic labels (keep readable) */
+html.lang-ar .nav__link,
+html.lang-ar .lang-toggle__btn,
+html.lang-ar .lang-toggle__option,
+html.lang-ar .mobile-menu__link,
+html.lang-ar .mobile-menu__lang-btn,
+html.lang-ar .proj-tag,
+html.lang-ar .proj-gallery__label,
+html.lang-ar .bk-entry__tag,
+html.lang-ar .vid-card__tag,
+html.lang-ar .vid-header__label,
+html.lang-ar .about__bio-label,
+html.lang-ar .footer__id,
+html.lang-ar .hero__role,
+html.lang-ar .exp-date,
+html.lang-ar .edu-date,
+html.lang-ar .dist-year,
+html.lang-ar .skill-cat-label,
+html.lang-ar .lang-name,
+html.lang-ar .lang-level,
+html.lang-ar .contact-form__label,
+html.lang-ar .contact-form__submit,
+html.lang-ar .bk-entry__cta-label {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+html.lang-ar .hero__lang-btn,
+html.lang-ar .mobile-menu__lang-btn,
+html.lang-ar .lang-toggle__option {
+  font-family: var(--font-m);
+  letter-spacing: .08em;
+}
+
+/* ══════════════════════════════════════════════════════
+   RTL LAYOUT OVERRIDES
+   ══════════════════════════════════════════════════════ */
+
+/* Nav */
+[dir="rtl"] .nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav__links {
+  flex-direction: row-reverse;
+}
+
+/* The lang toggle dropdown should open to the left in RTL */
+[dir="rtl"] .lang-toggle__menu {
+  right: auto;
+  left: 0;
+}
+
+/* Hero */
+[dir="rtl"] .hero__brand {
+  flex-direction: column; /* column stays column */
+}
+
+[dir="rtl"] .hero__nav ul {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero__name em {
+  margin-left: 0;
+  margin-right: .06em;
+}
+
+/* Keep name LTR (it's a proper noun) */
+[dir="rtl"] .hero__name {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* Arrows — flip forward/back direction semantics */
+[dir="rtl"] .arr[data-i18n="arr.back"],
+[dir="rtl"] .arr[data-i18n="arr.forward"] {
+  display: inline-block;
+}
+
+/* Works grid */
+[dir="rtl"] .grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .card__caption {
+  text-align: right;
+}
+
+[dir="rtl"] .card__tags {
+  flex-direction: row-reverse;
+}
+
+/* Project pages */
+[dir="rtl"] .proj-back {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .proj-meta {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .proj-meta [role="listitem"] {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .proj-body {
+  text-align: right;
+}
+
+[dir="rtl"] .proj-body p,
+[dir="rtl"] .proj-body em {
+  text-align: right;
+}
+
+[dir="rtl"] .proj-gallery__label {
+  text-align: right;
+}
+
+[dir="rtl"] .proj-nav__row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .proj-video-link {
+  flex-direction: row-reverse;
+}
+
+/* About page */
+[dir="rtl"] .about__intro {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .about__bio-header {
+  text-align: right;
+}
+
+[dir="rtl"] .about__bio-texts {
+  text-align: right;
+}
+
+[dir="rtl"] .about__bio-text {
+  text-align: right;
+}
+
+[dir="rtl"] .exp-list,
+[dir="rtl"] .edu-list,
+[dir="rtl"] .dist-list {
+  direction: rtl;
+}
+
+[dir="rtl"] .exp-item,
+[dir="rtl"] .edu-item,
+[dir="rtl"] .dist-item {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .exp-item > div,
+[dir="rtl"] .edu-item > div,
+[dir="rtl"] .dist-item > div {
+  text-align: right;
+}
+
+[dir="rtl"] .exp-title,
+[dir="rtl"] .exp-role,
+[dir="rtl"] .exp-note,
+[dir="rtl"] .exp-award {
+  text-align: right;
+}
+
+[dir="rtl"] .edu-title,
+[dir="rtl"] .edu-inst,
+[dir="rtl"] .edu-note,
+[dir="rtl"] .edu-mention {
+  text-align: right;
+}
+
+[dir="rtl"] .dist-title,
+[dir="rtl"] .dist-sub {
+  text-align: right;
+}
+
+[dir="rtl"] .cv-section__heading {
+  text-align: right;
+}
+
+[dir="rtl"] .skills-layout {
+  direction: rtl;
+}
+
+[dir="rtl"] .skill-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .skill-tags {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .lang-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .lang-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* Contact form */
+[dir="rtl"] .contact-form__row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .contact-form__label {
+  text-align: right;
+}
+
+[dir="rtl"] .contact-form__input,
+[dir="rtl"] .contact-form__textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .contact-form__submit-wrap {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .contact-form__submit {
+  flex-direction: row-reverse;
+}
+
+/* Books page */
+[dir="rtl"] .bk-header {
+  text-align: right;
+}
+
+[dir="rtl"] .bk-entry {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .bk-entry__body {
+  text-align: right;
+}
+
+[dir="rtl"] .bk-entry__meta {
+  text-align: right;
+}
+
+[dir="rtl"] .bk-entry__meta [role="listitem"] {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .bk-entry__text {
+  text-align: right;
+}
+
+[dir="rtl"] .bk-entry__cta {
+  flex-direction: row-reverse;
+}
+
+/* Videos page */
+[dir="rtl"] .vid-header {
+  text-align: right;
+}
+
+[dir="rtl"] .vid-card__caption {
+  text-align: right;
+}
+
+/* Footer */
+[dir="rtl"] .footer {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__links {
+  flex-direction: row-reverse;
+}
+
+/* Mobile menu */
+[dir="rtl"] .mobile-menu__list {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .mobile-menu__link {
+  text-align: right;
+}
+
+/* Swipe hint */
+[dir="rtl"] .swipe-hint {
+  flex-direction: row-reverse;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* On mobile the toggle lives in the nav bar */
+  .lang-toggle {
+    margin-left: auto; /* push it right when nav links are hidden */
+  }
+
+  .lang-toggle__btn {
+    min-width: 44px;
+    padding: .5rem .6rem;
+  }
+
+  /* Also available in the mobile menu at large tap targets */
+  .mobile-menu__lang-btn {
+    flex: 1;
+    max-width: 80px;
+  }
+}
+
+@media (min-width: 641px) {
+  .lang-toggle {
+    margin-left: .35rem;
+  }
+}
