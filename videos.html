@@ -31,6 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <noscript><style>body{opacity:1!important;animation:none!important;transform:none!important}.vid-card{opacity:1!important;animation:none!important;transform:none!important}</style></noscript>
+<link rel="stylesheet" href="css/i18n.css">
 </head>
 <body>
 <a href="#main" class="skip">Skip to content</a>
@@ -47,11 +48,11 @@
   </a>
   <nav aria-label="Primary navigation">
     <ul class="nav__links" role="list">
-      <li><a href="index.html" class="nav__link">Work</a></li>
-      <li><a href="videos.html" class="nav__link" aria-current="page">Videos</a></li>
-      <li><a href="about.html" class="nav__link">About</a></li>
-      <li><a href="about.html#contact" class="nav__link">Contact</a></li>
-      <li><a href="books.html" class="nav__link">Books</a></li>
+      <li><a href="index.html" class="nav__link" data-i18n="nav.work">Work</a></li>
+      <li><a href="videos.html" class="nav__link" aria-current="page" data-i18n="nav.videos">Videos</a></li>
+      <li><a href="about.html" class="nav__link" data-i18n="nav.about">About</a></li>
+      <li><a href="about.html#contact" class="nav__link" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="books.html" class="nav__link" data-i18n="nav.books">Books</a></li>
     </ul>
   </nav>
 </header>
@@ -60,9 +61,9 @@
   <section class="vid-section" aria-label="Videos">
 
     <div class="vid-header">
-      <p class="vid-header__label">Motion Work</p>
-      <h1 class="vid-header__title">Videos</h1>
-      <p class="vid-header__sub">Architectural renders and animations produced alongside project development.</p>
+      <p class="vid-header__label" data-i18n="videos.label">Motion Work</p>
+      <h1 class="vid-header__title" data-i18n="videos.title">Videos</h1>
+      <p class="vid-header__sub" data-i18n="videos.sub">Architectural renders and animations produced alongside project development.</p>
     </div>
 
     <div class="vid-grid" role="list">
@@ -80,9 +81,9 @@
           </div>
         </div>
         <div class="vid-card__caption">
-          <p class="vid-card__tag">PRO · Small Scale · Morocco · 2024</p>
-          <h2 class="vid-card__title">Sentry</h2>
-          <p class="vid-card__desc">Guard pavilion at Casablanca Finance City. Animation exploring the threshold condition between public approach and controlled access.</p>
+          <p class="vid-card__tag" data-i18n="videos.sentry.tag">PRO · Small Scale · Morocco · 2024</p>
+          <h2 class="vid-card__title" data-i18n="videos.sentry.title">Sentry</h2>
+          <p class="vid-card__desc" data-i18n="videos.sentry.desc">Guard pavilion at Casablanca Finance City. Animation exploring the threshold condition between public approach and controlled access.</p>
         </div>
       </article>
 
@@ -99,9 +100,9 @@
           </div>
         </div>
         <div class="vid-card__caption">
-          <p class="vid-card__tag">PRO · Infrastructure · Morocco · 2025</p>
-          <h2 class="vid-card__title">Sidi Maârouf Station</h2>
-          <p class="vid-card__desc">Animation for the Sidi Maârouf RER station, canopy structure, passenger flows, and urban integration within the Casablanca metropolitan rail network.</p>
+          <p class="vid-card__tag" data-i18n="videos.sidi.tag">PRO · Infrastructure · Morocco · 2025</p>
+          <h2 class="vid-card__title" data-i18n="videos.sidi.title">Sidi Maârouf Station</h2>
+          <p class="vid-card__desc" data-i18n="videos.sidi.desc">Animation for the Sidi Maârouf RER station, canopy structure, passenger flows, and urban integration within the Casablanca metropolitan rail network.</p>
         </div>
       </article>
 
@@ -118,9 +119,9 @@
           </div>
         </div>
         <div class="vid-card__caption">
-          <p class="vid-card__tag">PRO · Infrastructure · Morocco · 2025</p>
-          <h2 class="vid-card__title">Zenata Station</h2>
-          <p class="vid-card__desc">Architectural animation for the Zenata regional rail station, covered concourse, structural canopy, and multimodal connections at the edge of Casablanca.</p>
+          <p class="vid-card__tag" data-i18n="videos.zenata.tag">PRO · Infrastructure · Morocco · 2025</p>
+          <h2 class="vid-card__title" data-i18n="videos.zenata.title">Zenata Station</h2>
+          <p class="vid-card__desc" data-i18n="videos.zenata.desc">Architectural animation for the Zenata regional rail station, covered concourse, structural canopy, and multimodal connections at the edge of Casablanca.</p>
         </div>
       </article>
 
@@ -149,15 +150,16 @@
 </div>
 
 <footer class="footer" role="contentinfo">
-  <span class="footer__id">Hazem Radhouani · Architect</span>
+  <span class="footer__id" data-i18n="footer.id">Hazem Radhouani · Architect</span>
   <div class="footer__links">
     <a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" class="footer__link" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-    <a href="about.html#contact" class="footer__link">Contact</a>
+    <a href="about.html#contact" class="footer__link" data-i18n="nav.contact">Contact</a>
   </div>
-  <span class="footer__copy">© 2026</span>
+  <span class="footer__copy" data-i18n="footer.copy">© 2026</span>
 </footer>
 
 <script src="js/main.js" defer></script>
+<script src="js/i18n.js" defer></script>
 <script>
 /* Hash highlight: when arriving from a project page via #video-sentry or #video-zenata,
    gently highlight the relevant card so the user knows exactly which video is theirs */
