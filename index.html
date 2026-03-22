@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S61QWV2ZRE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S61QWV2ZRE');
+</script>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#EDE3D0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hazem Radhouani · Architecture and Motion Design">
+<meta name="author" content="Hazem Radhouani">
+<meta name="google-site-verification" content="-RpzxjbAYzM2EPvzRWvclvAFbUdq5-gsDAD_FswL7Lc" />
+<title>Hazem Radhouani</title>
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="Hazem Radhouani">
+<meta property="og:description" content="Architecture and Motion Design · 2026">
+<meta property="og:image"       content="images/og-cover.jpg">
+<meta name="twitter:card"       content="summary_large_image">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Variables ─────────────────────────────────────── */
+:root {
+  /*  Sanzo Wada · Dictionary of Color Combinations Vol.1
+      Architecture panel: Kijiro-shiro 黄白 (raw silk parchment)
+      Motion panel:       Koiai 濃藍 (deep indigo)
+      Text on each is the other's colour — a quiet cross-reference */
+  --arch-bg:    #EDE3D0;   /* Kijiro-shiro  */
+  --arch-hover: #E2D4BC;   /* one step richer on hover */
+  --arch-text:  #2B3A52;   /* Koiai for type on parchment */
+  --mot-bg:     #2B3A52;   /* Koiai deep indigo */
+  --mot-hover:  #364C68;   /* one step lighter on hover */
+  --mot-text:   #EDE3D0;   /* Kijiro-shiro for type on indigo */
+  --divider:    rgba(43, 58, 82, 0.20);
+
+  --futura: 'Futura', 'Futura PT', 'Futura Std', 'Jost',
+            'Century Gothic', 'Trebuchet MS', sans-serif;
+
+  /* Relaxed, precise ease-out */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Settling ease for click animation */
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body { font-family: var(--futura); }
+a    { text-decoration: none; color: inherit; display: block; }
+
+/* ── Gate ──────────────────────────────────────────── */
+.gate {
+  display: flex;
+  flex-direction: row;   /* horizontal on ALL screen sizes */
+  width: 100%; height: 100%;
+}
+
+/* ── Panels ─────────────────────────────────────────── */
+.gate__panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  /* Hover: flex expands smoothly, background shifts tone */
+  transition:
+    flex            520ms var(--ease-out),
+    background-color 400ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gate__panel--arch {
+  background-color: var(--arch-bg);
+  color: var(--arch-text);
+}
+.gate__panel--motion {
+  background-color: var(--mot-bg);
+  color: var(--mot-text);
+  border-left: 1px solid var(--divider);
+}
+
+/* Hover expand — desktop */
+@media (hover: hover) {
+  .gate:not(.is-leaving):has(.gate__panel--arch:hover)   .gate__panel--arch   { flex: 1.15 }
+  .gate:not(.is-leaving):has(.gate__panel--arch:hover)   .gate__panel--motion { flex: 0.85 }
+  .gate:not(.is-leaving):has(.gate__panel--motion:hover) .gate__panel--motion { flex: 1.15 }
+  .gate:not(.is-leaving):has(.gate__panel--motion:hover) .gate__panel--arch   { flex: 0.85 }
+  .gate__panel--arch:hover   { background-color: var(--arch-hover) }
+  .gate__panel--motion:hover { background-color: var(--mot-hover) }
+}
+
+/* Touch: no hover expand, just background shift on active */
+@media (hover: none) {
+  .gate__panel--arch:active   { background-color: var(--arch-hover) }
+  .gate__panel--motion:active { background-color: var(--mot-hover) }
+}
+
+/* ── Click animation ─────────────────────────────────
+   Chosen side expands to fill; other collapses + fades.
+   ease-settle: fast start, very slow drift into rest    */
+.gate.is-leaving .gate__panel {
+  transition:
+    flex             580ms var(--ease-settle),
+    opacity          360ms ease 60ms,
+    background-color 260ms ease;
+}
+.gate.is-leaving--arch   .gate__panel--arch   { flex: 3 }
+.gate.is-leaving--arch   .gate__panel--motion { flex: 0; opacity: 0 }
+.gate.is-leaving--motion .gate__panel--motion { flex: 3 }
+.gate.is-leaving--motion .gate__panel--arch   { flex: 0; opacity: 0 }
+.gate.is-leaving { pointer-events: none }
+
+/* ── Content ────────────────────────────────────────── */
+.gate__content {
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.gate__label {
+  font-family: var(--futura);
+  font-size: clamp(.9rem, 2.5vw, 2rem);
+  font-weight: 200;
+  letter-spacing: clamp(.2em, 1vw, .32em);
+  text-transform: uppercase;
+  line-height: 1;
+  display: block;
+}
+
+/* ── Responsive type only — layout stays horizontal ── */
+@media (max-width: 480px) {
+  .gate__label {
+    font-size: clamp(.75rem, 4.5vw, 1.2rem);
+    letter-spacing: .18em;
+  }
+}
+
+/* ── Reduce motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .gate__panel,
+  .gate.is-leaving .gate__panel { transition: none !important }
+}
+</style>
+</head>
+<body>
+<div class="gate" id="gate" role="main">
+
+  <a href="architecture.html" class="gate__panel gate__panel--arch"
+     id="gate-arch" aria-label="Architecture">
+    <div class="gate__content">
+      <span class="gate__label">Architecture</span>
+    </div>
+  </a>
+
+  <a href="motion.html" class="gate__panel gate__panel--motion"
+     id="gate-motion" aria-label="Motion Design">
+    <div class="gate__content">
+      <span class="gate__label">Motion</span>
+    </div>
+  </a>
+
+</div>
+<script>
+(function () {
+  'use strict';
+
+  var gate   = document.getElementById('gate');
+  var panels = gate.querySelectorAll('.gate__panel');
+
+  function pRM() {
+    return window.matchMedia &&
+           window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  }
+
+  function choose(panel) {
+    var href   = panel.getAttribute('href');
+    var isArch = panel.classList.contains('gate__panel--arch');
+
+    if (pRM()) { window.location.href = href; return; }
+
+    gate.classList.add('is-leaving');
+    gate.classList.add(isArch ? 'is-leaving--arch' : 'is-leaving--motion');
+
+    /* Navigate after animation (580ms) + small buffer */
+    setTimeout(function () { window.location.href = href; }, 640);
+  }
+
+  panels.forEach(function (panel) {
+    /* Click / tap */
+    panel.addEventListener('click', function (e) {
+      e.preventDefault();
+      choose(panel);
+    });
+    /* Keyboard */
+    panel.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        choose(panel);
+      }
+    });
+  });
+
+  /* bfcache: reset on back-navigation */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      gate.classList.remove('is-leaving','is-leaving--arch','is-leaving--motion');
+    }
+  });
+}());
+</script>
+</body>
+</html>
