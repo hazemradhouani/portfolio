@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S61QWV2ZRE"></script>
@@ -9,298 +9,456 @@
   gtag('config', 'G-S61QWV2ZRE');
 </script>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#EDE3D0">
+<meta name="theme-color" content="#ffffff">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Portfolio of Hazem Radhouani, architect specialising in heritage rehabilitation across Paris, Casablanca and Tokyo. Selected works 2022–2026.">
+<meta name="description" content="Hazem Radhouani, architect and motion designer. Architecture, rehabilitation, infrastructure, research, and motion work across Paris, Casablanca, Tokyo, and Tunisia.">
 <meta name="author" content="Hazem Radhouani">
-<meta name="google-site-verification" content="-RpzxjbAYzM2EPvzRWvclvAFbUdq5-gsDAD_FswL7Lc" />
-<title>Hazem Radhouani · Architect · Portfolio</title>
-<meta property="og:type"        content="website">
-<meta property="og:title"       content="Hazem Radhouani">
-<meta property="og:description" content="Architecture and Motion Design · 2026">
-<meta property="og:image"       content="images/og-cover.jpg">
-<meta name="twitter:card"       content="summary_large_image">
+<meta name="google-site-verification" content="-RpzxjbAYzM2EPvzRWvclvAFbUdq5-gsDAD_FswL7Lc">
+<title>Hazem Radhouani - Architecture / Motion / Research</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hazem Radhouani">
+<meta property="og:description" content="Architecture, motion, and research work across Paris, Casablanca, Tokyo, and Tunisia.">
+<meta property="og:image" content="images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Jost:wght@300;400;600;800&display=swap" rel="stylesheet">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hazemradhouani.github.io/portfolio/">
 <style>
-/* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  width: 100%; height: 100%;
-  overflow: hidden;
+:root {
+  --black: #080808;
+  --white: #ffffff;
+  --muted: #707070;
+  --line: #e5e5e5;
+  --accent: #b5622a;
+  --display: "Arial Black", "Jost", Impact, system-ui, sans-serif;
+  --body: "Jost", system-ui, sans-serif;
+  --mono: "DM Mono", "Courier New", monospace;
+}
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* ── Variables ─────────────────────────────────────── */
-:root {
-  /*  Sanzo Wada · Dictionary of Color Combinations Vol.1
-      Architecture panel: Kijiro-shiro 黄白 (raw silk parchment)
-      Motion panel:       Koiai 濃藍 (deep indigo)
-      Text on each is the other's colour — a quiet cross-reference */
-  --arch-bg:    #EDE3D0;   /* Kijiro-shiro  */
-  --arch-hover: #E2D4BC;   /* one step richer on hover */
-  --arch-text:  #2B3A52;   /* Koiai for type on parchment */
-  --mot-bg:     #2B3A52;   /* Koiai deep indigo */
-  --mot-hover:  #364C68;   /* one step lighter on hover */
-  --mot-text:   #EDE3D0;   /* Kijiro-shiro for type on indigo */
-  --divider:    rgba(43, 58, 82, 0.20);
-
-  --futura: 'Futura', 'Futura PT', 'Futura Std', 'Jost',
-            'Century Gothic', 'Trebuchet MS', sans-serif;
-
-  /* Relaxed, precise ease-out */
-  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* Settling ease for click animation */
-  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+body {
+  min-height: 100%;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--body);
+  overflow-x: hidden;
 }
-
-body { font-family: var(--futura); }
-a    { text-decoration: none; color: inherit; display: block; }
-
-/* ── Gate ──────────────────────────────────────────── */
-.gate {
-  display: flex;
-  flex-direction: row;   /* horizontal on ALL screen sizes */
-  width: 100%; height: 100%;
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+.skip {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10;
+  padding: .45rem .7rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: .7rem;
+  text-transform: uppercase;
 }
-
-/* ── Panels ─────────────────────────────────────────── */
-.gate__panel {
-  flex: 1;
+.skip:focus { top: .75rem; }
+.cover-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+}
+.cover-logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--black);
+  padding: .25rem 0;
+}
+.cover-logo .hr-wordmark {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 4.8vw, 4.7rem);
+  font-weight: 900;
+  line-height: .76;
+  letter-spacing: 0;
+  color: var(--black);
+}
+.cover-nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(.55rem, 1.8vw, 1.6rem);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.cover-nav__links a {
+  padding: .8rem 0;
+  border-bottom: 2px solid transparent;
+}
+.cover-nav__links a:hover,
+.cover-nav__links a:focus-visible {
+  border-color: var(--black);
+  outline: none;
+}
+.cover {
+  padding: clamp(1rem, 3vw, 2rem);
   overflow: hidden;
-  /* Hover: flex expands smoothly, background shifts tone */
-  transition:
-    flex            520ms var(--ease-out),
-    background-color 400ms ease;
-  -webkit-tap-highlight-color: transparent;
 }
-
-.gate__panel--arch {
-  background-color: var(--arch-bg);
-  color: var(--arch-text);
+.cover-hero {
+  min-height: calc(100svh - 58px - clamp(2rem, 6vw, 4rem));
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: stretch;
 }
-.gate__panel--motion {
-  background-color: var(--mot-bg);
-  color: var(--mot-text);
-  border-left: 1px solid var(--divider);
-}
-
-/* Hover expand — desktop */
-@media (hover: hover) {
-  .gate:not(.is-leaving):has(.gate__panel--arch:hover)   .gate__panel--arch   { flex: 1.15 }
-  .gate:not(.is-leaving):has(.gate__panel--arch:hover)   .gate__panel--motion { flex: 0.85 }
-  .gate:not(.is-leaving):has(.gate__panel--motion:hover) .gate__panel--motion { flex: 1.15 }
-  .gate:not(.is-leaving):has(.gate__panel--motion:hover) .gate__panel--arch   { flex: 0.85 }
-  .gate__panel--arch:hover   { background-color: var(--arch-hover) }
-  .gate__panel--motion:hover { background-color: var(--mot-hover) }
-}
-
-/* Touch: no hover expand, just background shift on active */
-@media (hover: none) {
-  .gate__panel--arch:active   { background-color: var(--arch-hover) }
-  .gate__panel--motion:active { background-color: var(--mot-hover) }
-}
-
-/* ── Click animation ─────────────────────────────────
-   Chosen side expands to fill; other collapses + fades.
-   ease-settle: fast start, very slow drift into rest    */
-.gate.is-leaving .gate__panel {
-  transition:
-    flex             580ms var(--ease-settle),
-    opacity          360ms ease 60ms,
-    background-color 260ms ease;
-}
-.gate.is-leaving--arch   .gate__panel--arch   { flex: 3 }
-.gate.is-leaving--arch   .gate__panel--motion { flex: 0; opacity: 0 }
-.gate.is-leaving--motion .gate__panel--motion { flex: 3 }
-.gate.is-leaving--motion .gate__panel--arch   { flex: 0; opacity: 0 }
-.gate.is-leaving { pointer-events: none }
-
-/* ── Content ────────────────────────────────────────── */
-.gate__content {
-  text-align: center;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
+.cover-copy {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: .5rem;
+  justify-content: space-between;
+  gap: 2rem;
+  min-width: 0;
+  border-right: 1px solid var(--line);
+  padding-right: clamp(1rem, 3vw, 2.5rem);
 }
-
-.gate__label {
-  font-family: var(--futura);
-  font-size: clamp(.9rem, 2.5vw, 2rem);
-  font-weight: 200;
-  letter-spacing: clamp(.2em, 1vw, .32em);
+.cover-kicker,
+.cover-meta,
+.cover-card__tag,
+.cover-link__label {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .09em;
+  line-height: 1.45;
   text-transform: uppercase;
-  line-height: 1;
-  display: block;
 }
-
-/* ── Responsive type only — layout stays horizontal ── */
-@media (max-width: 480px) {
-  .gate__label {
-    font-size: clamp(.75rem, 4.5vw, 1.2rem);
-    letter-spacing: .18em;
+.cover-kicker { color: var(--accent); }
+.cover-title {
+  max-width: 9.2ch;
+  font-family: var(--display);
+  font-size: clamp(4rem, 10vw, 11.5rem);
+  line-height: .78;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 720px;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.cover-meta strong {
+  display: block;
+  margin-bottom: .3rem;
+  color: var(--black);
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  letter-spacing: 0;
+  line-height: .9;
+}
+.cover-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, minmax(70px, 1fr));
+  gap: 10px;
+}
+.cover-card {
+  position: relative;
+  display: block;
+  min-height: 0;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+.cover-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.02);
+  transition: transform 700ms cubic-bezier(.2,0,.2,1), filter 700ms cubic-bezier(.2,0,.2,1);
+}
+.cover-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.68) 100%);
+  opacity: .86;
+  transition: opacity 300ms ease;
+}
+.cover-card__text {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  color: var(--white);
+}
+.cover-card__title {
+  margin-top: .3rem;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.55vw, 2.75rem);
+  line-height: .86;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.cover-card--architecture {
+  grid-column: span 4;
+  grid-row: span 4;
+}
+.cover-card--motion {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+.cover-card--research {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+.cover-card--profile {
+  grid-column: span 3;
+  grid-row: span 3;
+  background: var(--black);
+  color: var(--white);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cover-card--profile::after { display: none; }
+.cover-card--profile .cover-card__title {
+  color: var(--white);
+  font-size: clamp(1.35rem, 2.6vw, 3rem);
+}
+.cover-card:hover img,
+.cover-card:focus-visible img {
+  transform: scale(1.07);
+  filter: saturate(1.25) contrast(1.07);
+}
+.cover-card:hover::after,
+.cover-card:focus-visible::after {
+  opacity: .68;
+}
+.cover-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+.cover-index {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(1rem, 3vw, 2rem);
+  border-top: 1px solid var(--black);
+  border-left: 1px solid var(--black);
+}
+.cover-link {
+  min-height: clamp(120px, 17vw, 220px);
+  padding: clamp(.8rem, 2vw, 1.4rem);
+  border-right: 1px solid var(--black);
+  border-bottom: 1px solid var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 220ms ease, color 220ms ease;
+}
+.cover-link strong {
+  display: block;
+  max-width: 100%;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.25vw, 2.7rem);
+  line-height: .88;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.cover-link:hover,
+.cover-link:focus-visible {
+  background: var(--black);
+  color: var(--white);
+  outline: none;
+}
+.cover-link--accent:hover,
+.cover-link--accent:focus-visible {
+  background: var(--accent);
+}
+@media (max-width: 980px) {
+  .cover-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .cover-copy {
+    min-height: 62svh;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+  .cover-board {
+    min-height: 72svh;
+  }
+  .cover-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
-/* ── Reduce motion ──────────────────────────────────── */
+@media (min-width: 981px) {
+  .cover-hero {
+    height: calc(100svh - 58px - clamp(2rem, 6vw, 4rem));
+    min-height: 700px;
+  }
+  .cover-board {
+    height: 100%;
+    min-height: 0;
+    align-self: stretch;
+  }
+}
+@media (max-width: 620px) {
+  .cover-nav {
+    align-items: flex-start;
+    gap: .8rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+  }
+  .cover-nav__links {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 260px;
+    row-gap: 0;
+  }
+  .cover-title {
+    font-size: clamp(3.3rem, 21vw, 6rem);
+  }
+  .cover-meta {
+    grid-template-columns: 1fr;
+  }
+  .cover-board {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+    min-height: 0;
+  }
+  .cover-card {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    min-height: 360px;
+  }
+  .cover-card--profile {
+    min-height: 280px;
+  }
+  .cover-index {
+    grid-template-columns: 1fr;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .gate__panel,
-  .gate.is-leaving .gate__panel { transition: none !important }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
 </style>
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://hazemradhouani.github.io/portfolio/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Hazem Radhouani",
-  "alternateName": [
-    "Hazem Radhouni"
-  ],
   "jobTitle": "Architect",
-  "description": "Architect specialising in heritage rehabilitation, with professional experience at Studio BELEM in Paris and Yassir Khalil Studio in Casablanca. Highest Honours Graduate (Mention Très Bien), ENAU Carthage, 2024. Best Research Award, Sakura Science Program, Tokyo, 2025.",
   "url": "https://hazemradhouani.github.io/portfolio/",
   "email": "hazemradhouani@gmail.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/hazem-radhouani-b36616319/"
-  ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "ENAU · Université de Carthage",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "TN"
-    }
-  },
-  "worksFor": [
-    {
-      "@type": "Organization",
-      "name": "Studio BELEM",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Paris",
-        "addressCountry": "FR"
-      }
-    },
-    {
-      "@type": "Organization",
-      "name": "Yassir Khalil Studio",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Casablanca",
-        "addressCountry": "MA"
-      }
-    }
-  ],
-  "award": [
-    "Mention Très Bien à l'unanimité · ENAU · Université de Carthage · June 2024",
-    "Best Research Award · Sakura Science Program · Tokyo · 2025"
-  ],
-  "knowsAbout": [
-    "Heritage Rehabilitation",
-    "Architecture",
-    "Motion Design",
-    "Vernacular Architecture",
-    "Urban Morphology",
-    "Residential Rehabilitation",
-    "Infrastructure Architecture"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Hazem Radhouani · Architect",
-  "url": "https://hazemradhouani.github.io/portfolio/",
-  "description": "Portfolio of Hazem Radhouani, architect specialising in heritage rehabilitation across Paris, Casablanca and Tokyo.",
-  "author": {
-    "@type": "Person",
-    "name": "Hazem Radhouani"
-  },
-  "inLanguage": "en"
+  "sameAs": ["https://www.linkedin.com/in/hazem-radhouani-b36616319/"],
+  "knowsAbout": ["Architecture", "Heritage Rehabilitation", "Motion Design", "Urban Morphology", "Infrastructure Architecture"]
 }
 </script>
 </head>
 <body>
-<div class="gate" id="gate" role="main">
+<a href="#main" class="skip">Skip to content</a>
 
-  <a href="architecture.html" class="gate__panel gate__panel--arch"
-     id="gate-arch" aria-label="Architecture">
-    <div class="gate__content">
-      <span class="gate__label">Architecture</span>
-    </div>
+<header class="cover-nav" role="banner">
+  <a class="cover-logo" href="index.html" aria-label="Hazem Radhouani home">
+    <span class="hr-wordmark" aria-hidden="true">HR</span>
   </a>
+  <nav class="cover-nav__links" aria-label="Primary navigation">
+    <a href="architecture.html">Architecture</a>
+    <a href="motion.html">Motion</a>
+    <a href="books.html">Books</a>
+    <a href="about.html">About</a>
+    <a href="about.html#contact">Contact</a>
+  </nav>
+</header>
 
-  <a href="motion.html" class="gate__panel gate__panel--motion"
-     id="gate-motion" aria-label="Motion Design">
-    <div class="gate__content">
-      <span class="gate__label">Motion</span>
+<main id="main" class="cover" tabindex="-1">
+  <section class="cover-hero" aria-label="Hazem Radhouani portfolio">
+    <div class="cover-copy">
+      <p class="cover-kicker">Architecture / Motion / Research</p>
+      <h1 class="cover-title">Build from what exists.</h1>
+      <div class="cover-meta" aria-label="Portfolio highlights">
+        <p><strong>12</strong>selected architecture works</p>
+        <p><strong>04</strong>territories: Paris, Casablanca, Tokyo, Tunisia</p>
+        <p><strong>2026</strong>professional and research portfolio</p>
+      </div>
     </div>
-  </a>
 
-</div>
-<script>
-(function () {
-  'use strict';
+    <div class="cover-board" aria-label="Featured sections">
+      <a href="architecture.html" class="cover-card cover-card--architecture">
+        <img src="images/la-villette/thumb.jpg" alt="La Villette residential rehabilitation">
+        <span class="cover-card__text">
+          <span class="cover-card__tag">Architecture</span>
+          <span class="cover-card__title">Selected works</span>
+        </span>
+      </a>
+      <a href="motion.html" class="cover-card cover-card--motion">
+        <img src="images/motion/glitch-thumb.jpg" alt="Motion design still">
+        <span class="cover-card__text">
+          <span class="cover-card__tag">Motion</span>
+          <span class="cover-card__title">Moving image</span>
+        </span>
+      </a>
+      <a href="books.html" class="cover-card cover-card--research">
+        <img src="images/al-arg/thumb.jpg" alt="Al-Arg thesis project">
+        <span class="cover-card__text">
+          <span class="cover-card__tag">Research</span>
+          <span class="cover-card__title">Books / thesis</span>
+        </span>
+      </a>
+      <a href="about.html" class="cover-card cover-card--profile">
+        <span class="cover-card__tag">Profile</span>
+        <span class="cover-card__title">Architect between heritage, cities, and motion.</span>
+        <span class="cover-card__tag">Paris / Casablanca / Tokyo</span>
+      </a>
+    </div>
+  </section>
 
-  var gate   = document.getElementById('gate');
-  var panels = gate.querySelectorAll('.gate__panel');
-
-  function pRM() {
-    return window.matchMedia &&
-           window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  }
-
-  function choose(panel) {
-    var href   = panel.getAttribute('href');
-    var isArch = panel.classList.contains('gate__panel--arch');
-
-    if (pRM()) { window.location.href = href; return; }
-
-    gate.classList.add('is-leaving');
-    gate.classList.add(isArch ? 'is-leaving--arch' : 'is-leaving--motion');
-
-    /* Navigate after animation (580ms) + small buffer */
-    setTimeout(function () { window.location.href = href; }, 640);
-  }
-
-  panels.forEach(function (panel) {
-    /* Click / tap */
-    panel.addEventListener('click', function (e) {
-      e.preventDefault();
-      choose(panel);
-    });
-    /* Keyboard */
-    panel.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        choose(panel);
-      }
-    });
-  });
-
-  /* bfcache: reset on back-navigation */
-  window.addEventListener('pageshow', function (e) {
-    if (e.persisted) {
-      gate.classList.remove('is-leaving','is-leaving--arch','is-leaving--motion');
-    }
-  });
-}());
-</script>
+  <nav class="cover-index" aria-label="Portfolio index">
+    <a href="architecture.html" class="cover-link cover-link--accent">
+      <span class="cover-link__label">01 / Work</span>
+      <strong>Architecture index</strong>
+    </a>
+    <a href="motion.html" class="cover-link">
+      <span class="cover-link__label">02 / Motion</span>
+      <strong>Films and graphic motion</strong>
+    </a>
+    <a href="books.html" class="cover-link">
+      <span class="cover-link__label">03 / Research</span>
+      <strong>Books, thesis, reports</strong>
+    </a>
+    <a href="about.html#contact" class="cover-link">
+      <span class="cover-link__label">04 / Contact</span>
+      <strong>Start a conversation</strong>
+    </a>
+  </nav>
+</main>
 </body>
 </html>

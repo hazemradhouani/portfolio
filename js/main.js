@@ -388,14 +388,14 @@
         }
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Send <span class="arr" aria-hidden="true">&rarr;</span>';
+          submitBtn.innerHTML = 'Send <span class="arr arr--right" aria-hidden="true"></span>';
         }
       })
       .catch(function () {
         showFeedback('Network error. Please email hazemradhouani@gmail.com directly.', 'error');
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Send <span class="arr" aria-hidden="true">&rarr;</span>';
+          submitBtn.innerHTML = 'Send <span class="arr arr--right" aria-hidden="true"></span>';
         }
       });
     });
@@ -684,15 +684,7 @@
     menuLogo.href      = pfx + 'index.html';
     menuLogo.className = 'mobile-menu__logo';
     menuLogo.setAttribute('aria-label', 'Hazem Radhouani, Home');
-    menuLogo.innerHTML =
-      '<svg width="30" height="30" viewBox="0 0 30 30" fill="none" ' +
-      'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      '<line x1="3.2" y1="1.5" x2="3.2" y2="28.5" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>' +
-      '<line x1="3.2" y1="15" x2="15" y2="15" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>' +
-      '<line x1="15" y1="1.5" x2="15" y2="28.5" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>' +
-      '<path d="M15 1.5 A6.75,6.75 0 0 1 15 15" stroke="#0d0d0d" stroke-width="2.6" fill="none" stroke-linecap="square"/>' +
-      '<line x1="15" y1="15" x2="24" y2="28.5" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>' +
-      '</svg>';
+    menuLogo.innerHTML = '<span class="hr-wordmark" aria-hidden="true">HR</span>';
 
     /* Close button — animated × */
     var closeBtn = document.createElement('button');
@@ -738,7 +730,7 @@
     footer.className = 'mobile-menu__footer';
     var liLink = document.createElement('a');
     liLink.href        = 'https://www.linkedin.com/in/hazem-radhouani-b36616319/';
-    liLink.textContent = 'LinkedIn ↗';
+    liLink.textContent = 'LinkedIn';
     liLink.className   = 'mobile-menu__footer-link';
     liLink.target      = '_blank';
     liLink.rel         = 'noopener noreferrer';

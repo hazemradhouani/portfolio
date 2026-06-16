@@ -21,6 +21,7 @@
 <meta property="og:description" content="Heritage rehabilitation across Paris, Casablanca and Tokyo. Highest Honours Graduate, ENAU 2026.">
 <meta property="og:image"       content="images/og-cover.jpg">
 <meta name="twitter:card"       content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -91,17 +92,11 @@
 }
 </script>
 </head>
-<body>
+<body class="page-secondary page-about">
 <a href="#main" class="skip">Skip to content</a>
 <header class="nav" role="banner">
   <a href="index.html" class="nav__logo" aria-label="Hazem Radhouani, Home">
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="3.2" y1="1.5" x2="3.2" y2="28.5" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>
-      <line x1="3.2" y1="15" x2="15" y2="15" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>
-      <line x1="15" y1="1.5" x2="15" y2="28.5" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>
-      <path d="M15 1.5 A6.75,6.75 0 0 1 15 15" stroke="#0d0d0d" stroke-width="2.6" fill="none" stroke-linecap="square"/>
-      <line x1="15" y1="15" x2="24" y2="28.5" stroke="#0d0d0d" stroke-width="2.6" stroke-linecap="square"/>
-    </svg>
+    <span class="hr-wordmark" aria-hidden="true">HR</span>
   </a>
   <nav aria-label="Primary navigation">
     <ul class="nav__links" role="list">
@@ -110,6 +105,7 @@
       <li><a href="about.html" class="nav__link" aria-current="page">About</a></li>
       <li><a href="#contact" class="nav__link">Contact</a></li>
       <li><a href="books.html" class="nav__link">Books</a></li>
+      <li><a href="motion.html" class="nav__link">Motion</a></li>
     </ul>
   </nav>
 </header>
@@ -122,8 +118,8 @@
     <div class="about__bio">
       <div class="about__bio-header">
         <p class="about__bio-label">About</p>
-        <h1 class="about__bio-name">Hazem<em>Radhouani</em></h1>
-        <p class="about__bio-role">Architect · Heritage &amp; Rehabilitation · International Practice</p>
+        <h1 class="about__bio-name"><span>Hazem</span><span>Radhouani</span></h1>
+        <p class="about__bio-role">Architect / Heritage &amp; Rehabilitation / International Practice</p>
       </div>
       <div class="about__bio-spacer" aria-hidden="true"></div>
       <div class="about__bio-texts">
@@ -282,7 +278,7 @@
     <h2 class="about-contact__heading">Contact</h2>
     <div class="about-contact__links" role="list">
       <a href="mailto:hazemradhouani@gmail.com" class="about-contact__link" role="listitem">hazemradhouani@gmail.com</a>
-      <a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" class="about-contact__link" target="_blank" rel="noopener noreferrer" role="listitem">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" class="about-contact__link" target="_blank" rel="noopener noreferrer" role="listitem">LinkedIn</a>
     </div>
     <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/hazemradhouani@gmail.com" method="POST" novalidate>
       <input class="contact-form__hp" type="text" name="_honey" id="cf-hp" tabindex="-1" autocomplete="off">
@@ -308,7 +304,7 @@
         <textarea class="contact-form__textarea" id="cf-message" name="message" placeholder="Your message..." rows="5" required></textarea>
       </div>
       <div class="contact-form__submit-wrap">
-        <button type="submit" class="contact-form__submit">Send <span class="arr" aria-hidden="true">→</span></button>
+        <button type="submit" class="contact-form__submit">Send <span class="arr arr--right" aria-hidden="true"></span></button>
         <button type="button" class="about-back-to-top" aria-label="Back to top" onclick="(function(){var s=window.scrollY,t=null,d=Math.min(180+s*0.2,820),h=document.documentElement;h.style.scrollBehavior='auto';function e(p){return p===1?1:1-Math.pow(2,-10*p);}function step(ts){if(!t)t=ts;var prog=Math.min((ts-t)/d,1);window.scrollTo(0,s*(1-e(prog)));if(prog<1)requestAnimationFrame(step);else h.style.scrollBehavior='';}requestAnimationFrame(step);})()">
           <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polyline points="1.5,7.5 5.5,2.5 9.5,7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter"/></svg>
         </button>
@@ -322,4 +318,11 @@
   <span class="footer__id">Hazem Radhouani · Architect</span>
   <div class="footer__links">
     <a href="mailto:hazemradhouani@gmail.com" class="footer__link">Email</a>
-    <a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" class="f
+    <a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" class="footer__link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+  <span class="footer__copy">(c) 2026</span>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
