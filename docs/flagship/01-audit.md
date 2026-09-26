@@ -13,11 +13,11 @@
 **How the repository was read**
 - Three read-only subagents read every file in parallel: the six top-level pages plus site files; the 12 project pages; `css/styles.css`, `css/motion.css` and `js/main.js`. Each finding had to cite `file:line`.
 - I spot-checked the load-bearing claims myself with Grep/Read, for example `css/styles.css:49-59`, `index.html:4-10` and `index.html:390`.
-- I re-tested in a browser every finding the readers marked "not browser-tested" that ended up rated High (§6.9).
+- I re-tested in a browser the High-rated findings that the readers derived from code (§6.9). The one exception, a keyboard claim about the Books reader, is labelled as code reading.
 
 **How the site was measured**
 - The repo was served from a local static server under `/portfolio/`, the GitHub Pages base path, with gzip/brotli compression, byte-range support and real 404s.
-- Tools: Chromium 141.0.7390.37 (Playwright 1.56.1), Lighthouse 13.5.0 (3 runs per page and form factor, median chosen by Lighthouse's own `computeMedianRun`), axe-core 4.13.0 (WCAG 2.0/2.1/2.2 A and AA, plus best-practice).
+- Tools: Chromium 141.0.7390.37 (Playwright 1.56.1), Lighthouse 13.5.0 (desktop: 3 runs per page; mobile: 3 runs for the 9 pages it could measure and 1 to 3 attempts for the 9 that returned `NO_FCP`; median chosen by Lighthouse's own `computeMedianRun`), axe-core 4.13.0 (WCAG 2.0/2.1/2.2 A and AA, plus best-practice).
 
 **Limits**
 
@@ -40,7 +40,7 @@
 
 | Tool | Available here | Used in this audit | Planned use in later phases, and why |
 |---|---|---|---|
-| Subagents: `general-purpose`, `Explore`, `Plan`, `claude`, `claude-code-guide`, `statusline-setup` | Yes | 3 × general-purpose (read-only readers) | Parallel read-only analysis. An independent QA reviewer in Prompt 5 (CLAUDE.md working method). |
+| Subagents: `general-purpose`, `Explore`, `Plan`, `claude`, `claude-code-guide`, `statusline-setup` | Yes | 5 × general-purpose: 3 read-only readers (one relaunched after an accidental stop) and 1 independent reviewer of this document | Parallel read-only analysis. An independent QA reviewer in Prompt 5 (CLAUDE.md working method). |
 | Skill `impeccable` (critique, audit, typography, colour, motion, tokens) | Yes | No (audit phase is fact-finding) | Prompts 2 and 4: design direction, tokens, polish. |
 | Skills `design-taste-frontend`, `redesign-existing-projects`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `stitch-design-taste` | Yes | No | Prompt 2 only, as lenses for distinct directions, weighed against the CLAUDE.md identity rule (reject generic trends). |
 | Skills `emil-design-eng`, `apple-design`, `animate`, `improve-animations`, `find-animation-opportunities` | Yes | No | Prompt 2 motion philosophy; Prompt 4 motion build (purpose-first rule). |
@@ -68,8 +68,8 @@
 | JS | One IIFE, `js/main.js` (851 lines), loaded with `defer` on 17 pages (not `index.html`); inline scripts on `motion.html:483-618` and `videos.html:217-338` | agent C §11-12 |
 | CSS | `css/styles.css` (4,912 lines, 137 KB) on 17 pages; `css/motion.css` on `motion.html` only; `index.html` carries its own 340-line inline stylesheet (`index.html:33-372`) | agent C §11 |
 | Deploy | GitHub Pages project site at `https://hazemradhouani.github.io/portfolio/`. The source branch or workflow is UNVERIFIED: no Pages API access, and the host is blocked. | canonicals, e.g. `index.html:32`; `sitemap.xml:6`; `robots.txt:4` |
-| Jekyll | There is no `.nojekyll` or `_config.yml`. If Pages builds from a branch with Jekyll, `CLAUDE.md` and `images/IMAGES_README.txt` may be publicly served (UNVERIFIED). | root listing |
-| Branches | `main` (site); `flagship-upgrade` (this work). `master` holds one commit (`08615b1`, 2026-03-16, "Add video files") containing only `videos/`. It looks stale; whether Pages uses it is UNVERIFIED. | `git ls-remote`; GitHub API listing of `master` |
+| Jekyll | There is no `.nojekyll` or `_config.yml`. Everything in the published tree is public, including `CLAUDE.md` and `images/IMAGES_README.txt`; whether Jekyll renders the Markdown is UNVERIFIED. | root listing |
+| Branches | `main` (site); `flagship-upgrade` (this work); `claude/awesome-wozniak-449ipc` (this session's default branch, at `f35c61a`, unused). `master` holds one commit (`08615b1`, 2026-03-16, "Add video files") containing only `videos/`. It looks stale; whether Pages uses it is UNVERIFIED. | `git ls-remote`; GitHub API listing of `master` |
 | How it is served (local run) | `serve` log: `INFO Accepting connections at http://127.0.0.1:8080`. All 18 pages return 200 with `br`/`gzip`, MP4 byte ranges return 206, a missing page returns 404. There is no build step to run. | §0; curl checks in the session |
 | Repo weight | 166 MB working tree, of which 151 MB is 6 MP4 files and 12.3 MB is 50 image files | `du`, file listing |
 
@@ -102,7 +102,7 @@
 
 | Page | `<title>` | h1 (verbatim) | Main content |
 |---|---|---|---|
-| index | "Hazem Radhouani - Architecture / Motion / Research" | "Build from what exists." (`index.html:406`) | Kicker, 3 figures ("12 / 04 / 2026"), 4 image cards, 4 index links. No footer. |
+| index | "Hazem Radhouani - Architecture / Motion / Research" | "Build from what exists." (`index.html:406`) | Kicker, 3 figures ("12 / 04 / 2026"), 4 cards (3 with images), 4 index links. No footer. |
 | about | "About · Hazem Radhouani" | "Hazem" "Radhouani" in two spans with no space (`about.html:121`) | Bio (`:126`), 5 experience items, 3 education items, skills, 3 languages, 4 distinctions, contact form |
 | architecture | "Hazem Radhouani · Architect" (no page name) | "Places already alive." (`:223`) | Hero, 6 taxonomy links, 12 cards (`:279-400`), "Experience more" |
 | books | "Books · Hazem Radhouani" | "Books" (`:120`) | Thesis entry (`:124-186`), report entry (`:188-249`), iframe dialog |
@@ -134,7 +134,7 @@ Metadata is quoted from each page's meta block (`projects/*.html:151-175`). Coun
 - Software is named on 3/12 pages, and it is always Revit. Unreal, D5, PBR, photogrammetry, laser scan and point cloud appear on 0/12 project pages.
 - Results or recognition appear on 2/12 pages.
 - A supervisor is named on 0/3 academic pages.
-- "earth / earthen / rammed" appears only in figcaptions (`project-al-arg.html:196,244`; `project-tamansourt.html:206,209`).
+- Earthen construction is mentioned only in two Al-Arg captions (`project-al-arg.html:196,244`). Tamansourt's "rammed earth-toned masonry" (`:206` alt, `:209` caption) describes cladding colour.
 - "vernacular" appears once in visible text (`project-al-arg.html:178`).
 
 **Order and navigation**
@@ -193,12 +193,12 @@ Metadata is quoted from each page's meta block (`projects/*.html:151-175`). Coun
 | `images/al-arg/al-arg-structures.jpg` | 288 | jpg | JPEG | 1459x1042 | ≤1 |
 | `images/al-arg/al-arg-territory-map.jpg` | 209 | jpg | JPEG | 1187x904 | ×1.16 |
 | `images/al-arg/thumb.jpg` | 191 | jpg | JPEG | 928x466 | ≤1 |
-| `images/belhomme/belhomme-facades-demolition.jpg` | 229 | jpg | JPEG | 1310x937 | ≤1 |
+| `images/belhomme/belhomme-facades-demolition.jpg` | 229 | jpg | JPEG | 1310x937 | ×1.05 |
 | `images/belhomme/belhomme-plu-sections.jpg` | 216 | jpg | JPEG | 947x1042 | ×1.45 |
 | `images/belhomme/belhomme-render-courtyard.jpg` | 210 | jpg | JPEG | 827x947 | ×1.66 |
 | `images/belhomme/thumb.jpg` | 196 | jpg | JPEG | 574x770 | ×1.25 |
 | `images/bolivar/bolivar-render-aerial.jpg` | 1472 | jpg | JPEG | 1459x1042 | ≤1 |
-| `images/bolivar/bolivar-section-aa.jpg` | 237 | jpg | JPEG | 1337x820 | ≤1 |
+| `images/bolivar/bolivar-section-aa.jpg` | 237 | jpg | JPEG | 1337x820 | ×1.03 |
 | `images/bolivar/bolivar-volumetric-strategy.jpg` | 62 | jpg | JPEG | 476x804 | ×2.89 |
 | `images/bolivar/thumb.jpg` | 250 | jpg | JPEG | 611x760 | ×1.18 |
 | `images/books/report-cover.png` | 178 | png | JPEG ⚠ | 703x1003 | ≤1 |
@@ -262,15 +262,15 @@ All six are H.264 + AAC with the `moov` atom first (fast start). They are played
 
 | Link | Where | Status |
 |---|---|---|
-| LinkedIn profile | 19 `href` occurrences across 18 pages, all `target="_blank" rel="noopener noreferrer"` | NOT CHECKED (blocked by policy) |
+| LinkedIn profile | 19 `href` occurrences across 17 pages (none on index), all `target="_blank" rel="noopener noreferrer"` | NOT CHECKED (blocked by policy) |
 | Heyzine flip-books ×2 | `data-book-src`, `books.html:129,179,193,242` | NOT CHECKED (blocked) |
 | Google Fonts | 18 pages | 200 |
 | `mailto:hazemradhouani@gmail.com` | `about.html:280,320`; `motion.html:401` | – |
 
 **Missing on purpose-critical pages**
 - `index.html` has no footer, no email and no LinkedIn.
-- `videos.html` is not linked from `index.html` or `motion.html`.
-- `motion.html` has no link to `about.html` or `books.html`.
+- `videos.html` is not linked from `index.html`, or from `motion.html`'s desktop header and footer.
+- `motion.html`'s desktop header and footer have no link to `about.html` or `books.html`. Its JS mobile menu (≤640 px) does link Videos, About and Books (`js/main.js:660-667`).
 
 ### 4.7 Alt text, placeholders, inconsistencies
 
@@ -286,12 +286,12 @@ All six are H.264 + AAC with the `moov` atom first (fast start). They are played
 
 | Topic | Versions found |
 |---|---|
-| Graduation year of the Highest Honours | "ENAU Carthage, 2024" (JSON-LD, e.g. `about.html:45`) vs "graduated with Highest Honours (ENAU, 2026)" (`about.html:126`) and "ENAU 2026" (`about.html:21`) |
+| Graduation year | "Highest Honours Graduate (Mention Très Bien), ENAU Carthage, 2024" (JSON-LD, e.g. `about.html:45`) vs "graduated with Highest Honours (ENAU, 2026)" (`about.html:126`) and "ENAU 2026" (`about.html:21`). The CV lists two separate Highest Honours: the 2024 thesis (`:268-272`) and the 2026 DNA (`:248-252`). |
 | Thesis title and date | The title is filed under the Feb. 2026 DNA (`about.html:180-184`), but dated "Academic · Thesis · 2024" / "June 2024" (`books.html:152,167`). Al-Arg calls it "ENAU · National Architecture Diploma" (`project-al-arg.html:164-165`), while about lists June 2024 as the "Final Year Architectural Thesis" (`:189-194`). |
 | Sakura distinction | "Most Appreciated Research" (`about.html:147`) vs "Best Research Award" (`about.html:257`; `books.html:227,237`; JSON-LD on 17 pages) |
 | "award-winning thesis" | `about.html:171`, `architecture.html:272`. The only thesis distinction shown is the jury grade (`books.html:167`). |
 | Supervisor | "Prof. Monsef Al-Fourati · Prof. Adnan Ben Nejma" (`books.html:163`) vs "Prof. Moncef Fourati" (`books.html:231`) |
-| Thesis site name | "Al-Arg", "ARG", "Al Erg", "El Erg", "Hammat Al Jarid", "Jérid" (`project-al-arg.html:152,178`; `books.html:154,172`; keywords) |
+| Thesis site name | Four spellings: "Al-Arg", "ARG", "Al Erg", "El Erg" (`project-al-arg.html:152,178`; `books.html:154`; keywords). Also referenced by town ("Hammat Al Jarid") and region ("Jérid") (`books.html:154,172`). |
 | Al-Arg material system | "vernacular stone architecture" (`project-al-arg.html:178`) vs "stone and earth wall … rammed construction" (`:196`) and "earthen constructive system … earth masonry" (`:244`) |
 | Practice locations | "Paris, Casablanca, Tokyo" (`about.html:126`) vs "based between Paris, Casablanca, and Tunis" (`motion.html:366`). The only Japan item is a 2025 research programme, and no project is in Japan. |
 | Current employer (structured data) | `worksFor` lists Yassir Khalil Studio (`about.html:59-78`, on 17 pages) although the role ended 2024–2025 (`about.html:151`) |
@@ -326,9 +326,9 @@ All six are H.264 + AAC with the `moov` atom first (fast start). They are played
 
 **Failing text pairs**
 - `--g400` on white: **3.36:1**. It is used for the footer, card meta, CV metadata, labels and captions.
-- `--accent` on white: **4.43:1**, used on small kickers.
-- `--accent` on `#fdf6f1`: **4.14:1**.
-- (agent C §2; confirmed in the browser in §6.6)
+- `--accent` on white: **4.42:1**, used on small kickers.
+- `--accent` on `#fdf6f1`: **4.13:1**.
+- (browser values from axe, §6.6; agent C's formula gives the same to within 0.01)
 
 ### 5.2 Typography
 
@@ -350,7 +350,7 @@ All six are H.264 + AAC with the `moov` atom first (fast start). They are played
 **Scale**
 - There is no type scale: 112 distinct `font-size` values (42 rem literals, 68 one-off `clamp()`, 2 px) (agent C §3).
 - Body text is `13.5px` (`css/styles.css:51`), in px while everything else is in rem.
-- **Small text:** 75 of 122 rem-literal sizes are below 10 px. In the browser, nav links render at 10 px, project meta labels at **8 px**, kickers at 9 to 10 px, and the contact-form labels at 8.32 px on mobile (`css/styles.css:2848`).
+- **Small text:** 75 of 122 rem-literal sizes are below 10 px. In the browser, nav links render at 10 px, project meta labels at 8.3 px, some architecture labels at 8 px, and `motion.html` text goes down to **6.9 px**, the smallest on the site. Kickers render at 9 to 10 px, and the contact-form labels at 8.32 px on mobile (`css/styles.css:2848`).
 
 **Weights and tracking**
 - Weights 300, 400, 700, 800 and 900.
@@ -402,19 +402,20 @@ The full state map is in agent C §7.
 **Page-level motion**
 - `body` starts at `opacity: 0` and fades in over 600 ms (`css/styles.css:49-59`).
 - Many blocks use `opacity:0; animation: fadeUp 700ms … <delay>` (for example `:935`, `:978`, `:1094`).
-- Every internal link click fades the page out and waits 280 ms before navigating (`js/main.js:79-86`).
-- The architecture cards run an infinite shimmer (`:721`).
+- Every internal link click fades the page out and waits 280 ms before navigating, unless reduced motion is set (`js/main.js:75-86`).
+- The card loading shimmer is infinite and keeps running after the images load: 12 running animations on architecture at +1.2 s (`css/styles.css:721-725`, `js/main.js:285-299`).
 - Scroll reveal is driven by IntersectionObserver (`js/main.js:306-322`).
 
-**Purpose:** no animation has a documented purpose. This conflicts with the CLAUDE.md motion rule.
+**Purpose:** no animation's purpose is documented against the CLAUDE.md rule (orientation, feedback or hierarchy). Some code comments give one; for example the shimmer is a loading indicator (`css/styles.css:710`).
 
 **prefers-reduced-motion**
 - 8 blocks. The global rule (`css/styles.css:1761-1767`) shortens durations to 1 ms and disables the body fade.
 - **Not covered:**
   - delays (content stays hidden for up to 500 ms);
+  - scroll-reveal: under `reduce`, 83 text nodes on about and 21 on motion stay hidden until scrolled into view;
   - `scroll-behavior: smooth` (`:42`);
   - `scrollIntoView` in `js/main.js:137`;
-  - the inline rAF scrolls (`about.html:308`, `motion.html:441,598`, `videos.html:229`).
+  - the inline rAF scrolls (`about.html:308`, `motion.html:441`) and smooth scrolls (`motion.html:598`, `videos.html:229`).
 - In the browser, running animations dropped from 12 to 0 on architecture under `reduce`.
 
 ## 6. Baseline metrics
@@ -482,18 +483,19 @@ The failing audits are identical on almost every page:
 `NO_FCP` means Lighthouse waited for Chrome's `firstContentfulPaint` event and never received it. The limit was 30 s (default) on the first pages and 15 s later, so failures cost less time (`lighthouse/core/gather/driver/wait-for-condition.js:77-99`).
 
 The saved trace for About shows:
-- the page finished loading at 0.67 s;
-- Chrome's first paint was at 2.81 s;
-- frames show the body fading in until 3.17 s;
-- no contentful-paint event was ever emitted.
+- the load event at 0.69 s;
+- Chrome's first-paint event at 2.82 s;
+- frames showing the page fading in until 3.17 s;
+- no contentful-paint event, ever.
 
-Every failing page loads `styles.css`, whose `body` starts at `opacity:0` (`css/styles.css:56-57`). The same page in a Playwright browser with identical emulation does report FCP (568 ms).
+**The cause is UNVERIFIED.** The body fade (`css/styles.css:56-57`) is on all 17 non-index pages, including the 8 project pages that measured normally, so it does not explain the split. Passing and failing runs were interleaved in time. The same About page in Playwright with identical emulation reports FCP at 516 ms (`data/lhlike-about.txt`).
 
-So: the root cause inside Chromium is UNVERIFIED, but the page design, which hides all content behind an opacity animation, is what makes it unmeasurable here, and it conflicts with the CLAUDE.md rule "Nothing blocks content".
+Practical consequence: until the cause is found, the mobile bar cannot be checked with Lighthouse on these 9 pages. That affects how Prompt 5 compares against this baseline.
 
 Render-blocking resources on every measured page:
 - the Google Fonts stylesheet;
-- `styles.css` (137 KB), on every page except index.
+- `styles.css` (137 KB), on every page except index;
+- `css/motion.css` as well, on `motion.html`.
 
 ### 6.4 Mobile lab substitute (NOT Lighthouse; 3 runs, median by LCP)
 
@@ -559,13 +561,13 @@ Incomplete (manual review) color-contrast reasons: pseudoContent ×60, imgNode �
 
 
 **Keyboard and focus** (Tab through each page, 60 to 400 ms per step; computed styles compared focused vs not):
-- Every page has a skip link as its first tab stop. It does not work on 17 pages (§6.9).
+- Every page has a skip link as its first tab stop. On the pages that load `main.js` it does not move focus (confirmed on 3 pages; the same code runs on 14 more; §6.9).
 - **Focus indicators that exist (verified):**
   - index nav: an underline (`border-bottom-color` transparent → `#080808`);
   - taxonomy links: an ink background inversion;
   - project cards and prev/next: a 2 px solid outline.
 - **Weak or missing (from CSS source, agent C; not reproduced in the browser):**
-  - contact inputs: a 1.10:1 background change (`css/styles.css:1324`, `:3952-3963`);
+  - contact inputs: a 1.10:1 background change, plus the label darkening from `#8c8c8c` to `#0d0d0d`; the field itself has no indicator (`css/styles.css:1322-1324`, `:3952-3963`);
   - video element: `outline:none` with no replacement (`css/styles.css:2398`).
 - **Target size:** footer links are about 13 px tall and "View selected works" is 19 px tall, below the CLAUDE.md 24×24 bar. axe's WCAG 2.2 target-size rule passes them through its spacing exception.
 
@@ -602,8 +604,9 @@ Each check below was run in Chromium 141 against the local server. Screenshots a
 
 | Check | Method | Result |
 |---|---|---|
-| Navigation at 600 to 768 px | Load about, architecture, al-arg and motion at 600, 640, 641, 660, 680, 700, 720, 721 and 768 px; count visible header links and the burger | **Defect confirmed.** From 641 to 720 px there are 0 visible nav links and no burger on all 4 pages. Links appear at 721 px; the burger shows at ≤640 px. The same range is reached at 200% zoom on 1282 to 1440 px windows. Cause: `css/styles.css:2576-2578` (`display:none !important`) vs `:3490-3496`, `:4563-4570`. |
-| Skip link | Tab, Enter, Tab | **Defect confirmed on the 17 pages that load `main.js`.** Focus stays on the skip link, the hash does not change, and the next Tab lands on "HR" in the header (`js/main.js:128-138`). On `index.html` it works: focus moves into `main`. |
+| Navigation at 600 to 768 px | Load about, architecture, al-arg and motion at 600, 640, 641, 660, 680, 700, 720, 721 and 768 px; count visible header links and the burger | **Defect confirmed.** From 641 to 720 px there are 0 visible nav links and no burger on all 4 pages. Links appear at 721 px; the burger shows at ≤640 px. By arithmetic, the same range corresponds to 200% zoom on 1282 to 1440 px windows (not tested). The logo, footer links and, on project pages, "All Work" and prev/next remain usable. Cause: `css/styles.css:2576-2578` (`display:none !important`) vs `:3490-3496`, `:4563-4570`. |
+| Skip link | Tab, Enter, Tab | **Defect confirmed on the 3 pages tested that load `main.js`** (about, architecture, al-arg); the same code (`js/main.js:128-138`) runs on the other 14. Focus stays on the skip link, the hash does not change, and the next Tab lands on "HR" in the header. On `index.html` it works: focus moves into `main`. Landmarks exist, so WCAG 2.4.1 may still be met through them; the defect is a broken keyboard control. |
+| Card links in the accessibility tree | CDP `Accessibility.getPartialAXTree` | `a.card` (architecture) and `a.about-contact__link` (about): role `listitem`, accessible name empty. |
 | Fixed header after prev/next | Open al-arg, click "next", scroll 1500 px | **Defect confirmed.** The body keeps `entering--forward` with `transform: matrix(1,0,0,1,0,0)`. The header's top is −1500 px, so it scrolled away. On a direct load it stays at 0 (`css/styles.css:75-88`, `js/main.js:90-96`). |
 | Mobile menu focus | 375 px, open the menu, Tab 14 times | **Defect confirmed.** After the 6 menu items, focus moves to the burger (outside the dialog, under the overlay) and then to page links and inputs hidden under the overlay: 8 of 14 stops on about, 7 of 14 on al-arg (`js/main.js:824-841`). |
 | Motion nested link | Focus "Architecture project" in the Sentry card, press Enter | **Defect confirmed.** No navigation and no lightbox; the URL is unchanged (`motion.html:523-535`). |
@@ -617,7 +620,7 @@ Each check below was run in Chromium 141 against the local server. Screenshots a
 ### 7.1 The first 10 seconds (landing page)
 
 **Visible text in the first viewport** (browser text extraction):
-- **375 px:** "HR" · nav at 10 px · "Architecture / Motion / Research" (10 px) · h1 "Build from what exists." (79 px) · "12 selected architecture works" · "04 territories: Paris, Casablanca, Tokyo, Tunisia" · "2026 professional and research portfolio". **There is no image, no project and no name.**
+- **375 px:** "HR" · nav at 10 px · "Architecture / Motion / Research" (10 px) · h1 "Build from what exists." (79 px) · "12 selected architecture works" · "04 territories: Paris, Casablanca, Tokyo, Tunisia" · "2026 professional and research portfolio". **Only the top edge of an unlabelled photo is visible at the bottom; there is no project name and no person's name.**
 - **1440 px:** the same, plus four cards: "Architecture / Selected works", "Motion / Moving image", "Research / Books / thesis", and "Profile / Architect between heritage, cities, and motion. / Paris / Casablanca / Tokyo".
 
 **What a committee member learns in 10 seconds:** an "HR" monogram, a manifesto line and three figures. They do not learn:
@@ -653,13 +656,13 @@ The nav set, labels and order change by page:
 - **Survey/documentation outputs:** none labelled as such, even for Al-Arg, whose text claims "field surveys and heritage documentation … over two years" (`project-al-arg.html:180`).
 
 **Evidence depth varies widely:**
-- Villa Papillon has no gallery (1 image, 156 words).
+- Villa Papillon has no gallery (1 image, 135 narrative words).
 - Zenata has one drawing sheet.
 - Foubert has two elevations.
 - La Villette has two construction details.
 
 **Visual quality works against the "high-end visualization" claim:**
-- Key renders are shown at up to 3× their pixel size (Tamansourt facade ×2.99, Bolivar volumetric ×2.89, Tamansourt aerial ×2.75, Al-Arg renders ×2.55).
+- Key renders and diagrams are shown at up to 3× their pixel size (Tamansourt facade ×2.99, Bolivar volumetric diagrams ×2.89, Tamansourt aerial ×2.75, Al-Arg renders ×2.55).
 - Several sheets are stacked composites in one small file (`al-arg-renders.jpg`, 539×1042 px, holds three renders).
 
 **The flagship candidate, Al-Arg**, has the richest text (186 narrative + 244 caption words). It still lacks:
@@ -676,9 +679,9 @@ The nav set, labels and order change by page:
   - no direct thesis download: the thesis is readable only in a JS-opened third-party flip-book (`books.html:129`, `:282-288`);
   - no email or LinkedIn on `index.html` (no footer).
 - **Interaction friction:**
-  - Every internal click is intercepted: Ctrl/Cmd-click cannot open a new tab (`js/main.js:102-123`), which is a common reviewer habit.
-  - Every click adds a 280 ms blank-page delay (`js/main.js:84-86`).
-  - The floating back-to-top button shows after 120 ms and never hides (`js/main.js:434`). On a 375 px project page it overlaps the metadata (screenshot `project-al-arg-375-fold.png`).
+  - Every internal click is intercepted: Ctrl/Cmd-click cannot open a new tab (`js/main.js:102-123`).
+  - Every click adds a 280 ms blank-page delay, unless reduced motion is set (`js/main.js:75-86`).
+  - The floating back-to-top button shows after 120 ms and never hides (`js/main.js:434`). On a 375 px project page it floats over the metadata column (screenshot `project-al-arg-375-fold.png`).
 
 ## 8. Code findings
 
@@ -687,7 +690,7 @@ The nav set, labels and order change by page:
   - `css/styles.css` is 13 chronological patch layers (v9 base → "MVRDV-inspired index pass" → "Flagship secondary system" → 3 correction passes), each overriding the ones before (agent C §9).
   - `css/motion.css` has a first layer that its own later layer overrides entirely.
 - **Duplication**
-  - 168 selectors are declared in more than one block, and 36 declarations are fully shadowed. For example, `.page-about .about__bio-name` has its font-size set 8 times.
+  - 168 selectors are declared in more than one block, and 36 declarations are fully shadowed. For example, `.page-about .about__bio-name` is declared in 8 separate rule blocks (`css/styles.css:3771` to `:4899`).
   - 82 `!important`.
   - Nav, footer and JSON-LD are copy-pasted into 18 files with drift (§7.2).
   - The Person JSON-LD block is duplicated on 17 pages.
@@ -726,7 +729,7 @@ The nav set, labels and order change by page:
 4. [CONTENT NEEDED: your own role, phases and deliverables on each professional project. 9 of 12 pages lack it.]
 5. [CONTENT NEEDED: tools per project (Revit, D5, Unreal, the PBR capture workflow, survey instruments).]
 6. [CONTENT NEEDED: Al-Arg survey and documentation outputs (measured drawings, photo surveys, condition maps, any photogrammetry or point clouds) and the correct description of its material system (stone vs earth).]
-7. [CONTENT NEEDED: higher-resolution source files for the upscaled renders (Tamansourt aerial and facade, Bolivar volumetric, the three Al-Arg renders as separate files, Corallum renders, Sentry section).]
+7. [CONTENT NEEDED: higher-resolution source files for the upscaled renders and diagrams (Tamansourt aerial and facade, Bolivar volumetric diagrams, the three Al-Arg renders as separate files, Corallum renders, Sentry section).]
 8. [CONTENT NEEDED: the correct image and status of "Sidi Maarouf Station". It currently uses the Hay Mohammadi image and has no project page.]
 9. [CONTENT NEEDED: Villa Papillon gallery material, or a decision to drop or merge the project.]
 10. [CONTENT NEEDED: thesis and internship-report PDFs (or permission to link a hosted copy) and a thesis abstract.]
@@ -750,61 +753,62 @@ The nav set, labels and order change by page:
 
 | ID | Area | Finding | Evidence (file:line or measurement) | Severity | Effort |
 |---|---|---|---|---|---|
-| F01 | Content truth | Degree dates and thesis attribution contradict each other: the Highest Honours is dated 2024 in one place and 2026 in others; the thesis title is filed under the Feb 2026 DNA but dated June 2024; Al-Arg is labelled "National Architecture Diploma". | `about.html:45` (JSON-LD "…ENAU Carthage, 2024"); `about.html:21,126` ("2026"); `about.html:180-194`; `books.html:152,167`; `project-al-arg.html:164-165` | Critical | S +Owner |
+| F01 | Content truth | The graduation year contradicts itself: the JSON-LD says "Highest Honours Graduate … 2024" on 17 pages, while the About page and its share text say "graduated … 2026". The thesis/diploma attribution is also ambiguous: the thesis title is filed under the Feb 2026 DNA but dated June 2024, and Al-Arg is labelled "National Architecture Diploma". | `about.html:45` (JSON-LD); `about.html:21,126`; `about.html:180-194,248-252,268-272`; `books.html:152,167,237`; `project-al-arg.html:164-165` | Critical | S +Owner |
 | F02 | Content truth | The Sakura distinction is named two ways, and "award-winning thesis" is claimed where the only thesis distinction shown is a jury grade. | `about.html:147` "Most Appreciated Research" vs `about.html:257`, `books.html:227,237` "Best Research Award"; `about.html:171`, `architecture.html:272` vs `books.html:167` | Critical | S +Owner |
-| F03 | First impression | The name is never visible on the landing page. At 375 px the first viewport has no image, no project and no name, only "HR", a manifesto and three figures. | `index.html:390,403` (aria-label only); first-viewport text extraction (§7.1) | High | S |
-| F04 | Identity | The stated specialisms barely appear in visible content: "earth/earthen/rammed" is in 4 captions only, "vernacular" appears once, "PBR", photogrammetry and point cloud 0 times, "Unreal" once (skills list). The landing page frames the owner as "Architecture / Motion / Research". | `project-al-arg.html:178,196,244`; `project-tamansourt.html:206,209`; `about.html:219`; `index.html:405,438`; agent greps (A, B) | High | M +Owner |
+| F03 | First impression | The name is never visible on the landing page. At 375 px the first viewport shows "HR", a manifesto and three figures; only the top edge of an unlabelled photo shows, and there is no project name or person's name. | `index.html:390,403` (aria-label only); first-viewport text extraction (§7.1) | High | S |
+| F04 | Identity | The stated specialisms barely appear in visible content: earthen construction is mentioned in 2 Al-Arg captions only, "vernacular" once, "PBR", photogrammetry and point cloud 0 times, "Unreal" once (skills list). The landing page frames the owner as "Architecture / Motion / Research". | `project-al-arg.html:178,196,244`; `about.html:219`; `index.html:405,438`; agent greps (A, B) | High | M +Owner |
 | F05 | Storytelling | Own role is absent on 9/12 project pages, tools on 9/12, and outcomes on 10/12. | agent B §3.3 matrix, e.g. `project-tamansourt.html:179` "developed by the team at Yassir Khalil Studio" | High | M +Owner |
-| F06 | Research access | The thesis and report can only be read inside a JS-opened third-party Heyzine iframe: there is no link, no PDF and no abstract. The reader's focus trap cycles only its 2 toolbar buttons, so the iframe content is not reachable by keyboard. | `books.html:129,179,193,242,282-288`; `js/main.js:607-620` | High | M +Owner |
-| F07 | Flagship case | Al-Arg has no supervisor, no individual/group statement, no survey or documentation outputs (despite "field surveys and heritage documentation … over two years"), no link to the thesis and no references for Scarpa, Grassi or Italian urban morphology. | `project-al-arg.html:164,179,180`; supervisor exists only at `books.html:163` | High | M +Owner |
+| F06 | Research access | The thesis and report can only be read inside a JS-opened third-party Heyzine iframe: there is no link, no PDF and no formal abstract (there is a summary of about 100 words at `books.html:172-173`). From reading the code (not browser-tested), the reader's focus trap cycles only its 2 toolbar buttons, so the iframe content is not reachable by keyboard. | `books.html:129,179,193,242,282-288`; `js/main.js:607-620` | High | M +Owner |
+| F07 | Flagship case | Al-Arg has no supervisor, no individual/group statement, no gallery group identified as survey or documentation output (despite "field surveys and heritage documentation … over two years"; existing-state plans appear only inside the plans sheet, `:224,228`), no link to the thesis and no references for Scarpa, Grassi or Italian urban morphology. | `project-al-arg.html:164,179,180`; supervisor exists only at `books.html:163` | High | M +Owner |
 | F08 | Content truth | One image is presented as two projects: the Hay Mohammadi thumbnail is labelled "Sidi Maarouf Station" on two pages. | `architecture.html:369`; `motion.html:300-301`; `videos.html:147-148` | High | S +Owner |
-| F09 | Visual quality | Key renders are upscaled up to ×3 at 1440 px: Tamansourt facade ×2.99, Bolivar volumetric ×2.89, Tamansourt aerial ×2.75, Al-Arg renders ×2.55, Corallum renders ×2.17. The source files are 460-633 px wide. This undercuts the visualisation claim. | §4.4 (natural vs rendered width in Chromium) | High | M +Owner |
-| F10 | Evidence depth | Villa Papillon has no gallery at all: 1 image and 156 words. | `project-papillon.html:181-184`; agent B §3.4 | High | M +Owner |
-| F11 | Performance | Mobile LCP misses the 2.5 s target on every page Lighthouse could measure: 3.62-6.85 s (index 4.06 s). Substitute lab (applied throttling): LCP fails on 13/18 pages (2.62 to 7.28 s). It passes on index 1.52 s, sentry 1.95 s, architecture 2.13 s, books 2.37 s, about 2.48 s. | §6.3; §6.4 | High | L |
-| F12 | Motion / perf | All content on 17 pages sits behind a `body{opacity:0}` animation. Lighthouse mobile recorded no FCP on 9/18 pages (trace: first paint 2.81 s, no contentful paint). This conflicts with "Nothing blocks content". | `css/styles.css:49-59`; §6.3 | High | M |
-| F13 | Performance | Gallery images are embedded as base64, so HTML weighs 1,018.9 KB (La Villette) and 497.2 KB (Foubert). Mobile FCP is 6.62 s and 4.99 s. | `project-la-villette.html:190,203`; `project-foubert.html:189,198`; §6.3 | High | S |
-| F14 | Performance | There are no responsive images or modern formats: 0/72 `<img>` with `srcset`, no WebP/AVIF. 2000 px thumbnails are shown at 318-375 px on mobile, and eager heroes run up to 815 KB (Tamansourt). | §4.4; `project-tamansourt.html:148`; `architecture.html:358` | High | L (needs an image tool: dependency decision) |
-| F15 | Accessibility | Text contrast fails WCAG 1.4.3 on all 18 pages: `--g400 #8c8c8c` at 3.36:1, and the accent at 4.43:1 on small text. | axe `color-contrast` (serious) 18/18 (§6.6); `css/styles.css:18,21` | High | S |
-| F16 | Accessibility | The 12 project-card links and the contact links carry `role="listitem"`, which replaces the link role (WCAG 4.1.2). | `architecture.html:279-400`; `about.html:280-281`; `motion.html:401-402`; axe `aria-allowed-role` | High | S |
-| F17 | Accessibility | Video cards are `<article role="listitem" tabindex="0">` driven by JS handlers, with no button role. The motion lightbox has no focus trap. Pressing Enter on the nested "Architecture project" links does nothing (verified). | `motion.html:171-319,483-538`; `motion.html:530`; `videos.html:126-164,305-315`; §6.9 | High | M |
-| F18 | Navigation | There is no navigation at all between 641 and 720 px (also 200% zoom on 1282-1440 px windows): links and burger are both hidden on every page that uses `styles.css`. | `css/styles.css:2576-2578` vs `:3490-3496,4563-4570`; §6.9 (verified on 4 pages) | High | S |
-| F19 | Accessibility | "Skip to content" does not move focus on 17 pages (WCAG 2.4.1): focus stays on the link, and the next Tab goes to the header. | `js/main.js:128-138`; §6.9 | High | S |
-| F20 | Bug | After prev/next navigation the fixed header scrolls away with the page (the body keeps a transform), so navigation is lost on long case studies. | `css/styles.css:75-88`; `js/main.js:90-96`; §6.9 (header top −1500 px after a 1500 px scroll) | High | S |
-| F21 | Accessibility | The mobile menu does not contain focus: Tab leaves the dialog for links and inputs hidden under the overlay (WCAG 2.4.3, 2.4.11). | `js/main.js:824-841`; §6.9 (7-8 of 14 stops outside the dialog) | High | S |
-| F22 | Sharing | `og:image` on the 6 top-level pages points to a missing `images/og-cover.jpg`. Project pages use relative `og:image` URLs, and no page has `og:url`. Shares on LinkedIn (the only social channel) get no reliable preview. | `index.html:21` and 5 pages; `projects/*.html:23`; agents A, B | High | S +Owner |
+| F09 | Visual quality | Key renders and diagrams are upscaled up to ×3 at 1440 px: Tamansourt facade ×2.99, Bolivar volumetric diagrams ×2.89, Tamansourt aerial ×2.75, Al-Arg renders ×2.55, Corallum renders ×2.17. The source files are 460-633 px wide. This undercuts the visualisation claim. | §4.4 (natural vs rendered width in Chromium) | High | M +Owner |
+| F10 | Performance | Mobile LCP misses the 2.5 s target on every page Lighthouse could measure: 3.62-6.85 s (index 4.06 s). Substitute lab (applied throttling): LCP fails on 13/18 pages (2.62 to 7.28 s). It passes on index 1.52 s, sentry 1.95 s, architecture 2.13 s, books 2.37 s, about 2.48 s. | §6.3; §6.4 | High | L |
+| F11 | Performance | There are no responsive images or modern formats: 0/72 `<img>` with `srcset`, no WebP/AVIF. 2000 px thumbnails are shown at 318-375 px on mobile, and eager heroes run up to 815 KB (Tamansourt). | §4.4; `project-tamansourt.html:148`; `architecture.html:358` | High | L (needs an image tool: dependency decision) |
+| F12 | Accessibility | Text contrast fails WCAG 1.4.3 on all 18 pages: `--g400 #8c8c8c` at 3.36:1, and the accent at 4.42:1 on small text. | axe `color-contrast` (serious) 18/18 (§6.6); `css/styles.css:18,21` | High | S |
+| F13 | Accessibility | The 12 project-card links and the contact links carry `role="listitem"`, which replaces the link role. In Chromium's accessibility tree they are listitems with an **empty accessible name** (WCAG 4.1.2). | `architecture.html:279-400`; `about.html:280-281`; `motion.html:401-402`; CDP `Accessibility.getPartialAXTree` (§6.9); axe `aria-allowed-role` | High | S |
+| F14 | Accessibility | Video cards are `<article role="listitem" tabindex="0">` driven by JS handlers, with no button role. The motion lightbox has no focus trap. Pressing Enter on the nested "Architecture project" links does nothing (verified). | `motion.html:171-319,483-538`; `motion.html:530`; `videos.html:126-164,305-315`; §6.9 | High | M |
+| F15 | Navigation | There is no primary navigation (neither links nor burger) between 641 and 720 px, on every page that uses `styles.css`. By arithmetic this includes 200% zoom on 1282-1440 px windows (UNVERIFIED). | `css/styles.css:2576-2578` vs `:3490-3496,4563-4570`; §6.9 (verified on 4 pages) | High | S |
+| F16 | Accessibility | "Skip to content" does not move focus on the pages that load `main.js` (confirmed on 3, the same code on 14 more): focus stays on the link, and the next Tab goes to the header. It is a broken keyboard control; WCAG 2.4.1 is at risk, though landmarks exist. | `js/main.js:128-138`; §6.9 | High | S |
+| F17 | Bug | After prev/next navigation the fixed header scrolls away with the page (the body keeps a transform), so navigation is lost on long case studies. | `css/styles.css:75-88`; `js/main.js:90-96`; §6.9 (header top −1500 px after a 1500 px scroll) | High | S |
+| F18 | Accessibility | The mobile menu does not contain focus: Tab leaves the dialog for links and inputs hidden under the overlay (WCAG 2.4.3, 2.4.11). | `js/main.js:824-841`; §6.9 (7-8 of 14 stops outside the dialog) | High | S |
+| F19 | Sharing | `og:image` on the 6 top-level pages points to a missing `images/og-cover.jpg`. Project pages use relative `og:image` URLs, and no page has `og:url`. Shares on LinkedIn (the only social channel) get no reliable preview. | `index.html:21` and 5 pages; `projects/*.html:23`; agents A, B | High | S +Owner |
+| F20 | Evidence depth | Villa Papillon has no gallery at all: 1 image and 135 narrative words. | `project-papillon.html:181-184`; agent B §3.4 | Medium | M +Owner |
+| F21 | Motion | All content on 17 pages starts at `opacity:0` and relies on a 600 ms CSS fade, plus per-block delays, to appear. This conflicts with "Nothing blocks content". Content does stay visible with JS off. | `css/styles.css:49-59,935,978,1094`; §6.9 | Medium | M |
+| F22 | Performance | Gallery images are embedded as base64, so HTML weighs 1,018.9 KB (La Villette) and 497.2 KB (Foubert): not separately cacheable or lazy-loadable. Lighthouse's simulated mobile FCP is 6.62 s and 4.99 s. The applied-throttling lab gives 2.26 s for both, the same as other pages, so the FCP impact depends on the method. | `project-la-villette.html:190,203`; `project-foubert.html:189,198`; §6.3, §6.4 | Medium | S |
 | F23 | Typography | There are three type systems. Heading stacks start with a system font ("Arial Black"), so rendering depends on the OS. Some fonts are declared but not loaded: architecture headings fall back to DejaVu Sans and motion text to Liberation Mono. Weight 900 is synthesised. Cormorant is requested on 17 pages but used only by the mobile menu. | §5.2 (Chromium platform-font report); `css/styles.css:3025,3602,3702,2719`; `motion.html:32,61-64`; `architecture.html:32` | Medium | M |
-| F24 | Legibility | 75 of 122 rem font sizes are under 10 px. In the browser, nav is 10 px, project meta labels 8 px and mobile form labels 8.32 px. Body text is set in px (13.5 px). | §5.2; `css/styles.css:51,1580-1591,2848` | Medium | M |
+| F24 | Legibility | 75 of 122 rem font sizes are under 10 px. In the browser, nav is 10 px, project meta labels 8.3 px, architecture labels 8 px and `motion.html` text as small as 6.9 px. Body text is set in px (13.5 px). | §5.2; `css/styles.css:51,1580-1591,2848,4293`; `css/motion.css:33,375` | Medium | M |
 | F25 | Accessibility | The label-in-name check (WCAG 2.5.3) fails on every page: the logo's visible text is "HR" but its accessible name is "Hazem Radhouani, Home". | Lighthouse `label-content-name-mismatch` 18/18; `about.html:98-99` | Medium | S |
 | F26 | Navigation | Navigation changes between pages: different sets, labels and order; "Work" means `architecture.html` on 16 pages and `motion.html` on motion; "Home" goes to two different pages (WCAG 3.2.3/3.2.4). | §7.2; `index.html:394-398`; `motion.html:139-142`; `projects/*.html:123`; `js/main.js:684` | Medium | M |
 | F27 | UX | Five taxonomy links that look like filters all jump to `#works`. | `architecture.html:256-260` | Medium | S |
-| F28 | UX | Link interception breaks Ctrl/Cmd-click (open in new tab) and adds a 280 ms blank-page delay to every internal navigation. | `js/main.js:79-86,102-123` | Medium | S |
+| F28 | UX | Link interception breaks Ctrl/Cmd-click (open in new tab) and adds a 280 ms blank-page delay to every internal navigation, unless reduced motion is set. | `js/main.js:75-86,102-123` | Medium | S |
 | F29 | Motion | Reduced motion is incomplete: delays still hide content for up to 500 ms, smooth scrolling is not reset, 4 inline rAF/smooth scrolls ignore it, and `motion.css` has no reduced-motion block. | `css/styles.css:42,978,1535,1761-1767`; `about.html:308`; `motion.html:441,598`; `videos.html:229` | Medium | S |
-| F30 | Motion | No animation has a stated purpose, and there are decorative loops (an infinite shimmer, hover zoom and saturation). This conflicts with the CLAUDE.md motion rule. | `css/styles.css:721`; `index.html:193-194,247-251` | Medium | S |
-| F31 | Media | Each film is up to 60 MB (120 s at 4.2 Mb/s), with no poster and no captions track. Audio tracks are present; their content is UNDETERMINED. | §4.5; `motion.html:459-462`; `videos.html:192-196` | Medium | M +Owner |
-| F32 | Privacy | GA4 loads on 18/18 pages with no consent step, and there are EU (Paris) visitors. The legal requirement is UNVERIFIED; this is not legal advice. | `index.html:4-10`; grep "consent" = 0 | Medium | S +Owner |
-| F33 | Structured data | The CreativeWork `author` is the owner alone on team projects; `worksFor` lists a past employer; there is no `image`; `dateCreated` mismatches the displayed year. | `projects/*.html:101-105`; `project-foubert.html:179`; `about.html:59-78,151` | Medium | S +Owner |
-| F34 | Content truth | Secondary facts disagree: practice locations (Tokyo, Tunis), supervisor spelling, six spellings of the thesis site, the Al-Arg material system, job title, and the "2026" figure. | §4.7 table | Medium | S +Owner |
-| F35 | Evidence depth | Zenata has one drawing sheet, Foubert two elevations, and La Villette two construction details. None has a plan, section or survey. | `project-zenata.html:172`; `project-foubert.html:184`; `project-la-villette.html:184` | Medium | M +Owner |
-| F36 | Performance | Render-blocking resources: the Google Fonts CSS on every page plus the 137 KB `styles.css` on every page except index. Lighthouse estimates 1.79 s of savings on the index mobile run. | Lighthouse `render-blocking-insight`; `projects/*.html:32-33` | Medium | M |
-| F37 | Performance | The mobile LCP image is lazy-loaded on motion and videos, and LCP heroes on project pages have no dimensions. | §6.4 LCP elements; `motion.html:176`; `videos.html:128`; `projects/*.html:148` | Medium | S |
-| F38 | Code | The CSS is an accretion of 13 patch layers with 82 `!important`, 168 selectors declared more than once, 36 shadowed declarations and 483 dead lines. 70-83% of `styles.css` is unused on each page. | agent C §9-10; Chromium coverage (§6.7) | Medium | XL (rebuild) |
-| F39 | Design system | There are no working tokens: 112 font sizes, 152 spacing values, 24 hex and 47 rgba literals, 6 near-duplicate off-whites and 12 unused tokens. | §5 | Medium | XL (rebuild) |
-| F40 | Code | `index.html` is a separate design system: its own inline CSS and tokens, no `main.js`, no footer. | `index.html:33-372` | Medium | L |
-| F41 | Accessibility | Project pages have no headings below h1; gallery labels are `<p>` elements (WCAG 1.3.1). | `projects/*.html` (h2-h6 = 0); agent B | Medium | S |
-| F42 | Accessibility | Forms: the outline is removed and replaced by a 1.10:1 cue; the error is generic, not tied to fields, and clears after 7 s; there are no required markers; `role="alert"` is combined with `aria-live="polite"`. | `css/styles.css:1324,3952-3963`; `js/main.js:349-356,408`; `about.html:290-312` | Medium | M |
-| F43 | Accessibility | The video element's outline is removed with no replacement. | `css/styles.css:2398` | Medium | S |
-| F44 | Accessibility | Books: `<button>` wraps `<div>`; `role="listitem"` has no list parent (axe `aria-required-parent`, critical impact); the dialog is `aria-hidden` but contains focusable buttons. | `books.html:132-139,157-165,264-273`; axe (§6.6) | Medium | S |
-| F45 | Robustness | After a bfcache restore, the `is-leaving--forward/--back` classes keep `transform !important` on body, which can shift the page and detach fixed elements. The code path is confirmed; runtime is UNVERIFIED because Playwright disables bfcache. | `js/main.js:45-53,80-81`; `css/styles.css:67-74` | Medium | S |
-| F46 | Deploy / SEO | `robots.txt` lives under `/portfolio/`, where crawlers do not read it. Every sitemap `lastmod` is 2026-03-27, while every page changed on 2026-06-16. | `robots.txt:1-4`; `sitemap.xml:7`; `git log` (agent A) | Low | S |
-| F47 | Deploy | The stale `master` branch holds only `videos/`. The Pages source branch is UNVERIFIED. There is no `.nojekyll`, so `CLAUDE.md` and `images/IMAGES_README.txt` may be published (UNVERIFIED). | GitHub API (`master` @ `08615b1`); root listing | Low | S +Owner |
-| F48 | Assets | A duplicate portrait, 4 unreferenced page scans, 5 wrong file extensions and filenames containing spaces. | §4.4; `images/images/portrait.jpg`; `images/la-villette/La villette_page-0001.jpg` | Low | S |
-| F49 | SEO | Titles use inconsistent separators and the architecture title has no page name. Project meta descriptions are 64-92 character keyword strings, and the same 509-character keywords string is on all 12 project pages. | `index.html:17`; `architecture.html:19`; `projects/*.html:15,17` | Low | S |
-| F50 | HTML validity | Empty `src=""` on an iframe and on `<source>` elements; `motion.html` lacks `</body></html>`; obsolete iframe attributes. | `books.html:282-288`; `motion.html:460,618`; `videos.html:194` | Low | S |
-| F51 | Code | Dead JS: `window.portfolioLinks`, `--reader-scale`, two scroll handlers with no effect (one calls `getBoundingClientRect` on every scroll), and 29 unused `data-i18n` attributes. | `js/main.js:15-28,58-65,147-161,519`; `books.html` | Low | S |
-| F52 | Robustness | IntersectionObserver is used without a feature test inside the single IIFE (a throw would kill the mobile menu); fullscreen promises are unhandled; the raw hash is passed to `querySelector`; there are timer races. | `js/main.js:150,408,541,567`; `videos.html:224` | Low | S |
-| F53 | Security | The form posts to formsubmit.co with its captcha disabled and the address in the URL path. The iframe `src` comes from any `data-book-src` without a host check, and the iframe is not sandboxed. Inline handlers would block a strict CSP. | `about.html:283-287`; `js/main.js:371,528`; `books.html:282-288`; `motion.html:180,441` | Low | S |
-| F54 | Accessibility | New-tab links carry no warning. French phrases have no `lang`. The About and Motion h1s read as "HazemRadhouani" because the spans have no whitespace. | 19 LinkedIn links; `books.html:167`; `about.html:121,169`; `motion.html:153` | Low | S |
-| F55 | IA | `videos.html` duplicates the films already on `motion.html`, and is not linked from index or motion. | `videos.html:126-181` vs `motion.html:270-341` | Low | S +Owner |
-| F56 | UX | The floating back-to-top button appears after 120 ms, never hides, and covers content on 375 px project pages. | `js/main.js:434`; screenshot `project-al-arg-375-fold.png` | Low | S |
-| F57 | Layout | Card `width`/`height` attributes differ from the real pixels on 7 thumbnails, and heroes are cropped by `object-fit: cover`. | `architecture.html:227-402`; `css/styles.css:4235-4255` | Low | S |
+| F30 | Media | Each film is up to 60 MB (120 s at 4.2 Mb/s), with no poster and no captions track. Audio tracks are present; their content is UNDETERMINED. | §4.5; `motion.html:459-462`; `videos.html:192-196` | Medium | M +Owner |
+| F31 | Privacy | GA4 loads on 18/18 pages with no consent step. EU visitors are expected, since the owner works in Paris (an assumption: there is no traffic data). The legal requirement is UNVERIFIED; this is not legal advice. | `index.html:4-10`; grep "consent" = 0 | Medium | S +Owner |
+| F32 | Structured data | The CreativeWork `author` is the owner alone on team projects; `worksFor` lists a past employer; there is no `image`; `dateCreated` uses the start year for some ranges and the end year for others. | `projects/*.html:101-105`; `project-foubert.html:179`; `about.html:59-78,151` | Medium | S +Owner |
+| F33 | Content truth | Secondary facts disagree: practice locations (Tokyo, Tunis), supervisor spelling, four spellings of the thesis site, the Al-Arg material system, job title, and the "2026" figure. | §4.7 table | Medium | S +Owner |
+| F34 | Evidence depth | Zenata has one combined plans-and-section sheet, Foubert two elevations only, and La Villette two 1:20 and 1:5 construction details. None has a render or any survey material. | `project-zenata.html:172-181`; `project-foubert.html:184`; `project-la-villette.html:184-207` | Medium | M +Owner |
+| F35 | Performance | Render-blocking resources: the Google Fonts CSS on every page plus the 137 KB `styles.css` on every page except index. Lighthouse estimates 1.79 s of savings on the index mobile run. | Lighthouse `render-blocking-insight`; `projects/*.html:32-33` | Medium | M |
+| F36 | Performance | The mobile LCP image is lazy-loaded on motion and videos, and LCP heroes on project pages have no dimensions. | §6.4 LCP elements; `motion.html:176`; `videos.html:128`; `projects/*.html:148` | Medium | S |
+| F37 | Code | The CSS is an accretion of 13 patch layers with 82 `!important`, 168 selectors declared more than once, 36 shadowed declarations and 483 dead lines. 70-83% of `styles.css` is unused on each page. | agent C §9-10; Chromium coverage (§6.7) | Medium | XL (rebuild) |
+| F38 | Design system | There are no working tokens: 112 font sizes, 152 spacing values, 24 hex and 47 rgba literals, 6 near-duplicate off-whites and 12 unused tokens. | §5 | Medium | XL (rebuild) |
+| F39 | Code | `index.html` is a separate design system: its own inline CSS and tokens, no `main.js`, no footer. | `index.html:33-372` | Medium | L |
+| F40 | Accessibility | Project pages have no headings below h1; gallery labels are `<p>` elements (WCAG 1.3.1). | `projects/*.html` (h2-h6 = 0); agent B | Medium | S |
+| F41 | Accessibility | Forms: the outline is removed, and the field's only focus cue is a 1.10:1 background change (the label also darkens); the error is generic, not tied to fields, and clears after 7 s; there are no required markers; `role="alert"` is combined with `aria-live="polite"`. | `css/styles.css:1324,3952-3963`; `js/main.js:349-356,408`; `about.html:290-312` | Medium | M |
+| F42 | Accessibility | The video element's outline is removed with no replacement. | `css/styles.css:2398` | Medium | S |
+| F43 | Accessibility | Books: `<button>` wraps `<div>`; `role="listitem"` has no list parent (axe `aria-required-parent`, critical impact). | `books.html:132-139,157-165`; axe (§6.6) | Medium | S |
+| F44 | Robustness | After a bfcache restore, the `is-leaving--forward/--back` classes keep `transform !important` on body, which can shift the page and detach fixed elements. The code path is confirmed; runtime is UNVERIFIED because Playwright disables bfcache. | `js/main.js:45-53,80-81`; `css/styles.css:67-74` | Medium | S |
+| F45 | Measurement | Lighthouse mobile cannot measure 9 of 18 pages (`NO_FCP` in every attempt). The cause is UNVERIFIED: the body fade is also on the pages that measured. Until this is resolved, the mobile bar cannot be checked with Lighthouse on those pages. | §6.3 | Medium | M |
+| F46 | Motion | Motion purposes are not documented against the CLAUDE.md rule, and the card loading shimmer keeps running after images load (12 running animations on architecture at +1.2 s). | `css/styles.css:710,721-725`; `js/main.js:285-299`; measure data (§5.6) | Low | S |
+| F47 | Deploy / SEO | `robots.txt` lives under `/portfolio/`, where crawlers do not read it. Every sitemap `lastmod` is 2026-03-27, while every page changed on 2026-06-16. | `robots.txt:1-4`; `sitemap.xml:7`; `git log` (agent A) | Low | S |
+| F48 | Deploy | The stale `master` branch holds only `videos/`. The Pages source branch is UNVERIFIED. `CLAUDE.md` and `images/IMAGES_README.txt` are in the published tree (public reachability UNVERIFIED). | GitHub API (`master` @ `08615b1`); root listing | Low | S +Owner |
+| F49 | Assets | A duplicate portrait, 4 unreferenced page scans, 5 wrong file extensions and filenames containing spaces. | §4.4; `images/images/portrait.jpg`; `images/la-villette/La villette_page-0001.jpg` | Low | S |
+| F50 | SEO | Titles use inconsistent separators and the architecture title has no page name. Project meta descriptions are 64-92 character keyword strings, and the same 509-character keywords string is on all 12 project pages. | `index.html:17`; `architecture.html:19`; `projects/*.html:15,17` | Low | S |
+| F51 | HTML validity | Empty `src=""` on an iframe and on `<source>` elements; `motion.html` lacks `</body></html>`; obsolete iframe attributes. | `books.html:282-288`; `motion.html:460,618`; `videos.html:194` | Low | S |
+| F52 | Code | Dead JS: `window.portfolioLinks`, `--reader-scale`, two scroll handlers with no effect (one calls `getBoundingClientRect` on every scroll), and 29 unused `data-i18n` attributes. | `js/main.js:15-28,58-65,147-161,519`; `books.html` | Low | S |
+| F53 | Robustness | IntersectionObserver is used without a feature test inside the single IIFE (a throw would kill the mobile menu); fullscreen promises are unhandled; the raw hash is passed to `querySelector`; there are timer races. | `js/main.js:150,408,541,567`; `videos.html:224` | Low | S |
+| F54 | Security | The form posts to formsubmit.co with its captcha disabled and the address in the URL path. The iframe `src` comes from any `data-book-src` without a host check, and the iframe is not sandboxed. Inline handlers would block a strict CSP. | `about.html:283-287`; `js/main.js:371,528`; `books.html:282-288`; `motion.html:180,441` | Low | S |
+| F55 | Accessibility | New-tab links carry no warning, and French phrases have no `lang` (WCAG 3.1.2). | 19 LinkedIn links; `books.html:167`; `about.html:169` | Low | S |
+| F56 | IA | `videos.html` duplicates the films already on `motion.html`, and is not linked from index or from motion's desktop header and footer (motion's JS mobile menu does link it). | `videos.html:126-181` vs `motion.html:270-341` | Low | S +Owner |
+| F57 | UX | The floating back-to-top button appears after 120 ms, never hides, and floats over the metadata column on 375 px project pages. | `js/main.js:434`; screenshot `project-al-arg-375-fold.png` | Low | S |
+| F58 | Layout | Card `width`/`height` attributes differ from the real pixels on 7 thumbnails, and heroes are cropped by `object-fit: cover`. | `architecture.html:227-402`; `css/styles.css:4235-4255` | Low | S |
 
