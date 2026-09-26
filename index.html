@@ -1,464 +1,285 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S61QWV2ZRE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-S61QWV2ZRE');
-</script>
-<meta charset="UTF-8">
-<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Hazem Radhouani, architect and motion designer. Architecture, rehabilitation, infrastructure, research, and motion work across Paris, Casablanca, Tokyo, and Tunisia.">
+<title>Hazem Radhouani · Architect, heritage documentation and earthen architecture</title>
+<meta name="description" content="Hazem Radhouani, architect specialising in heritage documentation and earthen architecture. Survey and documentation, BIM delivery in Revit, and visualisation in Unreal Engine and D5 Render.">
+<link rel="canonical" href="https://hazemradhouani.github.io/portfolio/">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script src="js/site.js" defer></script>
+<meta name="theme-color" content="#F6F6F3">
 <meta name="author" content="Hazem Radhouani">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="Hazem Radhouani, Hazem Radhouni, Hazem Radhouani architect, architecte Hazem Radhouani, heritage rehabilitation, réhabilitation patrimoine, abandoned village Tunisia, Al-Arg, El Erg, Hammat-al-jarid, ENAU Carthage, architect Paris, architect Casablanca, architect Tunisia, Studio BELEM, Yassir Khalil Studio, Sakura Science Program, residential rehabilitation Paris, rail station Casablanca, vernacular architecture Tunisia, contemporary architecture Morocco, portfolio architecte, architecture portfolio 2026">
 <meta name="google-site-verification" content="-RpzxjbAYzM2EPvzRWvclvAFbUdq5-gsDAD_FswL7Lc">
-<title>Hazem Radhouani - Architecture / Motion / Research</title>
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hazem Radhouani">
-<meta property="og:description" content="Architecture, motion, and research work across Paris, Casablanca, Tokyo, and Tunisia.">
-<meta property="og:image" content="images/og-cover.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Jost:wght@300;400;600;800&display=swap" rel="stylesheet">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://hazemradhouani.github.io/portfolio/">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --black: #080808;
-  --white: #ffffff;
-  --muted: #707070;
-  --line: #e5e5e5;
-  --accent: #b5622a;
-  --display: "Arial Black", "Jost", Impact, system-ui, sans-serif;
-  --body: "Jost", system-ui, sans-serif;
-  --mono: "DM Mono", "Courier New", monospace;
-}
-html {
-  min-height: 100%;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body {
-  min-height: 100%;
-  background: var(--white);
-  color: var(--black);
-  font-family: var(--body);
-  overflow-x: hidden;
-}
-img { display: block; max-width: 100%; height: auto; }
-a { color: inherit; text-decoration: none; }
-.skip {
-  position: absolute;
-  top: -100%;
-  left: 1rem;
-  z-index: 10;
-  padding: .45rem .7rem;
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--mono);
-  font-size: .7rem;
-  text-transform: uppercase;
-}
-.skip:focus { top: .75rem; }
-.cover-nav {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 58px;
-  padding: 0 clamp(1rem, 3vw, 2.5rem);
-  background: rgba(255,255,255,.96);
-  border-bottom: 1px solid var(--line);
-}
-.cover-logo {
-  display: inline-flex;
-  align-items: center;
-  color: var(--black);
-  padding: .25rem 0;
-}
-.cover-logo .hr-wordmark {
-  display: block;
-  font-family: var(--display);
-  font-size: clamp(2.6rem, 4.8vw, 4.7rem);
-  font-weight: 900;
-  line-height: .76;
-  letter-spacing: 0;
-  color: var(--black);
-}
-.cover-nav__links {
-  display: flex;
-  align-items: center;
-  gap: clamp(.55rem, 1.8vw, 1.6rem);
-  font-family: var(--mono);
-  font-size: .62rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.cover-nav__links a {
-  padding: .8rem 0;
-  border-bottom: 2px solid transparent;
-}
-.cover-nav__links a:hover,
-.cover-nav__links a:focus-visible {
-  border-color: var(--black);
-  outline: none;
-}
-.cover {
-  padding: clamp(1rem, 3vw, 2rem);
-  overflow: hidden;
-}
-.cover-hero {
-  min-height: calc(100svh - 58px - clamp(2rem, 6vw, 4rem));
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
-  gap: clamp(1rem, 3vw, 2.5rem);
-  align-items: stretch;
-}
-.cover-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  min-width: 0;
-  border-right: 1px solid var(--line);
-  padding-right: clamp(1rem, 3vw, 2.5rem);
-}
-.cover-kicker,
-.cover-meta,
-.cover-card__tag,
-.cover-link__label {
-  font-family: var(--mono);
-  font-size: .62rem;
-  letter-spacing: .09em;
-  line-height: 1.45;
-  text-transform: uppercase;
-}
-.cover-kicker { color: var(--accent); }
-.cover-title {
-  max-width: 9.2ch;
-  font-family: var(--display);
-  font-size: clamp(4rem, 10vw, 11.5rem);
-  line-height: .78;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  overflow-wrap: anywhere;
-}
-.cover-meta {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  max-width: 720px;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-}
-.cover-meta strong {
-  display: block;
-  margin-bottom: .3rem;
-  color: var(--black);
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 3vw, 3rem);
-  letter-spacing: 0;
-  line-height: .9;
-}
-.cover-board {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, minmax(70px, 1fr));
-  gap: 10px;
-}
-.cover-card {
-  position: relative;
-  display: block;
-  min-height: 0;
-  overflow: hidden;
-  background: #f2f2f2;
-}
-.cover-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.08) contrast(1.02);
-  transition: transform 700ms cubic-bezier(.2,0,.2,1), filter 700ms cubic-bezier(.2,0,.2,1);
-}
-.cover-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.68) 100%);
-  opacity: .86;
-  transition: opacity 300ms ease;
-}
-.cover-card__text {
-  position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 1;
-  color: var(--white);
-}
-.cover-card__title {
-  margin-top: .3rem;
-  font-family: var(--display);
-  font-size: clamp(1.2rem, 2.55vw, 2.75rem);
-  line-height: .86;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-.cover-card--architecture {
-  grid-column: span 4;
-  grid-row: span 4;
-}
-.cover-card--motion {
-  grid-column: span 2;
-  grid-row: span 3;
-}
-.cover-card--research {
-  grid-column: span 3;
-  grid-row: span 2;
-}
-.cover-card--profile {
-  grid-column: span 3;
-  grid-row: span 3;
-  background: var(--black);
-  color: var(--white);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.cover-card--profile::after { display: none; }
-.cover-card--profile .cover-card__title {
-  color: var(--white);
-  font-size: clamp(1.35rem, 2.6vw, 3rem);
-}
-.cover-card:hover img,
-.cover-card:focus-visible img {
-  transform: scale(1.07);
-  filter: saturate(1.25) contrast(1.07);
-}
-.cover-card:hover::after,
-.cover-card:focus-visible::after {
-  opacity: .68;
-}
-.cover-card:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-.cover-index {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: clamp(1rem, 3vw, 2rem);
-  border-top: 1px solid var(--black);
-  border-left: 1px solid var(--black);
-}
-.cover-link {
-  min-height: clamp(120px, 17vw, 220px);
-  padding: clamp(.8rem, 2vw, 1.4rem);
-  border-right: 1px solid var(--black);
-  border-bottom: 1px solid var(--black);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: background 220ms ease, color 220ms ease;
-}
-.cover-link strong {
-  display: block;
-  max-width: 100%;
-  font-family: var(--display);
-  font-size: clamp(1.25rem, 2.25vw, 2.7rem);
-  line-height: .88;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  overflow-wrap: anywhere;
-}
-.cover-link:hover,
-.cover-link:focus-visible {
-  background: var(--black);
-  color: var(--white);
-  outline: none;
-}
-.cover-link--accent:hover,
-.cover-link--accent:focus-visible {
-  background: var(--accent);
-}
-@media (max-width: 980px) {
-  .cover-hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .cover-copy {
-    min-height: 62svh;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-    padding-right: 0;
-    padding-bottom: 1rem;
-  }
-  .cover-board {
-    min-height: 72svh;
-  }
-  .cover-index {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 981px) {
-  .cover-hero {
-    height: calc(100svh - 58px - clamp(2rem, 6vw, 4rem));
-    min-height: 700px;
-  }
-  .cover-board {
-    height: 100%;
-    min-height: 0;
-    align-self: stretch;
-  }
-}
-@media (max-width: 620px) {
-  .cover-nav {
-    align-items: flex-start;
-    gap: .8rem;
-    padding-top: .7rem;
-    padding-bottom: .7rem;
-  }
-  .cover-nav__links {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    max-width: 260px;
-    row-gap: 0;
-  }
-  .cover-title {
-    font-size: clamp(3.3rem, 21vw, 6rem);
-  }
-  .cover-meta {
-    grid-template-columns: 1fr;
-  }
-  .cover-board {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    gap: 10px;
-    min-height: 0;
-  }
-  .cover-card {
-    grid-column: 1 / -1 !important;
-    grid-row: auto !important;
-    min-height: 360px;
-  }
-  .cover-card--profile {
-    min-height: 280px;
-  }
-  .cover-index {
-    grid-template-columns: 1fr;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    transition: none !important;
-    animation: none !important;
-  }
-}
-</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hazem Radhouani">
+<meta property="og:title" content="Hazem Radhouani · Architect, heritage documentation and earthen architecture">
+<meta property="og:description" content="Hazem Radhouani, architect specialising in heritage documentation and earthen architecture. Survey and documentation, BIM delivery in Revit, and visualisation in Unreal Engine and D5 Render.">
+<meta property="og:url" content="https://hazemradhouani.github.io/portfolio/">
+<meta property="og:image" content="https://hazemradhouani.github.io/portfolio/images/og/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hazem Radhouani, architect. Al-Arg, Tunisia.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hazem Radhouani · Architect, heritage documentation and earthen architecture">
+<meta name="twitter:description" content="Hazem Radhouani, architect specialising in heritage documentation and earthen architecture. Survey and documentation, BIM delivery in Revit, and visualisation in Unreal Engine and D5 Render.">
+<meta name="twitter:image" content="https://hazemradhouani.github.io/portfolio/images/og/home.jpg">
+<meta name="twitter:image:alt" content="Hazem Radhouani, architect. Al-Arg, Tunisia.">
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Hazem Radhouani",
-  "jobTitle": "Architect",
-  "url": "https://hazemradhouani.github.io/portfolio/",
-  "email": "hazemradhouani@gmail.com",
-  "sameAs": ["https://www.linkedin.com/in/hazem-radhouani-b36616319/"],
-  "knowsAbout": ["Architecture", "Heritage Rehabilitation", "Motion Design", "Urban Morphology", "Infrastructure Architecture"]
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "Hazem Radhouani",
+ "url": "https://hazemradhouani.github.io/portfolio/",
+ "inLanguage": "en",
+ "author": {
+  "@id": "https://hazemradhouani.github.io/portfolio/#person"
+ }
 }
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Person",
+ "@id": "https://hazemradhouani.github.io/portfolio/#person",
+ "name": "Hazem Radhouani",
+ "alternateName": [
+  "Hazem Radhouni"
+ ],
+ "jobTitle": "Architect",
+ "description": "Architect specialising in heritage documentation and earthen architecture, with professional experience at Studio BELEM in Paris and Yassir Khalil Studio in Casablanca. Highest Honours, Final Year Architectural Thesis, ENAU, Université de Carthage, June 2024. National Architecture Diploma with Highest Honours, February 2026. Most Appreciated Research, Sakura Science Program, Japan, 2025.",
+ "url": "https://hazemradhouani.github.io/portfolio/",
+ "image": "https://hazemradhouani.github.io/portfolio/images/portrait.jpg",
+ "email": "mailto:hazemradhouani@gmail.com",
+ "sameAs": [
+  "https://www.linkedin.com/in/hazem-radhouani-b36616319/"
+ ],
+ "alumniOf": {
+  "@type": "CollegeOrUniversity",
+  "name": "ENAU · Université de Carthage",
+  "address": {
+   "@type": "PostalAddress",
+   "addressCountry": "TN"
+  }
+ },
+ "worksFor": {
+  "@type": "Organization",
+  "name": "Studio BELEM",
+  "address": {
+   "@type": "PostalAddress",
+   "addressLocality": "Paris",
+   "addressCountry": "FR"
+  }
+ },
+ "award": [
+  "Highest Honours · Unanimous Jury · National Architecture Diploma · ENAU, Université de Carthage · 2026",
+  "Most Appreciated Research · Sakura Science Program · Saga University & Waseda University, Japan · 2025",
+  "2nd Place · Competition · Zenata Station · Casablanca Metropolitan Rail, Morocco · 2025",
+  "Highest Honours · Unanimous Jury · Final Year Architectural Thesis · ENAU, Université de Carthage · 2024"
+ ],
+ "knowsAbout": [
+  "Heritage Documentation",
+  "Earthen Architecture",
+  "Vernacular Architecture",
+  "Heritage Rehabilitation",
+  "Architectural Survey",
+  "Building Information Modeling",
+  "Revit",
+  "Unreal Engine",
+  "D5 Render",
+  "Urban Morphology",
+  "Residential Rehabilitation",
+  "Infrastructure Architecture",
+  "Motion Design"
+ ],
+ "knowsLanguage": [
+  "ar",
+  "fr",
+  "en"
+ ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S61QWV2ZRE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S61QWV2ZRE');</script>
 </head>
 <body>
-<a href="#main" class="skip">Skip to content</a>
-
-<header class="cover-nav" role="banner">
-  <a class="cover-logo" href="index.html" aria-label="Hazem Radhouani home">
-    <span class="hr-wordmark" aria-hidden="true">HR</span>
-  </a>
-  <nav class="cover-nav__links" aria-label="Primary navigation">
-    <a href="architecture.html">Architecture</a>
-    <a href="motion.html">Motion</a>
-    <a href="books.html">Books</a>
-    <a href="about.html">About</a>
-    <a href="about.html#contact">Contact</a>
-  </nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="site-header__inner wrap">
+<a class="brand" href="./"><span class="brand__name">Hazem Radhouani</span><span class="brand__role">Architect</span></a>
+<nav class="site-nav" aria-label="Main"><ul><li><a href="architecture.html">Work</a></li><li><a href="books.html">Research</a></li><li><a href="about.html">About</a></li><li><a href="motion.html">Motion</a></li><li><a href="about.html#contact">Contact</a></li></ul></nav>
+<button class="menu-button" type="button" commandfor="menu" command="show-modal" aria-haspopup="dialog"><span class="menu-button__lines" aria-hidden="true"></span>Menu</button>
+</div>
 </header>
+<main id="main" tabindex="-1">
+<section class="hero wrap" aria-labelledby="hero-name">
+<h1 class="hero__name" id="hero-name">Hazem Radhouani</h1>
+<div class="hero__body grid">
+<div class="hero__text">
+<p class="hero__role">Architect specialising in heritage documentation and earthen architecture.</p>
+<p class="hero__sub">Survey and documentation, BIM delivery in Revit, and visualisation in Unreal Engine and D5 Render.</p>
+<div class="hero__cta btn-row"><a class="btn" href="architecture.html">View work<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-right"></use></svg></a><a class="btn btn--ghost" href="books.html">Research</a></div>
+</div>
+<figure class="hero__fig">
+<a class="work__link" href="projects/project-al-arg.html"><span class="work__plate plate" style="--native: 928px"><picture><source type="image/avif" srcset="images/opt/al-arg/thumb-160.avif 160w, images/opt/al-arg/thumb-320.avif 320w, images/opt/al-arg/thumb-480.avif 480w, images/opt/al-arg/thumb-800.avif 800w, images/opt/al-arg/thumb-928.avif 928w" sizes="(min-width: 1600px) 859px, (min-width: 1024px) calc(53vw - 14px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/al-arg/thumb-160.webp 160w, images/opt/al-arg/thumb-320.webp 320w, images/opt/al-arg/thumb-480.webp 480w, images/opt/al-arg/thumb-800.webp 800w, images/opt/al-arg/thumb-928.webp 928w" sizes="(min-width: 1600px) 859px, (min-width: 1024px) calc(53vw - 14px), calc(100vw - 32px)"><img src="images/al-arg/thumb.jpg" alt="Al-Arg, architectural thesis, ARG village, Tunisia" width="928" height="466" loading="eager" fetchpriority="high" decoding="async"></picture></span></a>
+<figcaption class="mono">Al-Arg · Tunisia · Academic · Thesis · 2023–2024</figcaption>
+</figure>
+</div>
+</section>
 
-<main id="main" class="cover" tabindex="-1">
-  <section class="cover-hero" aria-label="Hazem Radhouani portfolio">
-    <div class="cover-copy">
-      <p class="cover-kicker">Architecture / Motion / Research</p>
-      <h1 class="cover-title">Build from what exists.</h1>
-      <div class="cover-meta" aria-label="Portfolio highlights">
-        <p><strong>12</strong>selected architecture works</p>
-        <p><strong>04</strong>territories: Paris, Casablanca, Tokyo, Tunisia</p>
-        <p><strong>2026</strong>professional and research portfolio</p>
-      </div>
-    </div>
+<section class="section flagship" aria-labelledby="flagship-h">
+<div class="wrap">
+<div class="grid flagship__grid">
+<div class="col-annot">
+<p class="flagship__meta mono">Academic · Thesis · Tunisia · 2023–2024</p>
+<h2 class="flagship__title vt" id="flagship-h" style="view-transition-name: t-al-arg">Al-Arg</h2>
+</div>
+<div class="col-main">
+<p class="section__lead">Build from what exists.</p>
+<p class="flagship__summary">Degree thesis awarded Highest Honours with a unanimous jury at ENAU, Université de Carthage, 2024. The project proposes a strategy for the rehabilitation of the village of ARG, an abandoned settlement in the Tunisian interior whose population evacuated over the course of the twentieth century, leaving behind an intact but deteriorating fabric of vernacular stone architecture.</p>
+<p class="flagship__honour mono">Highest Honours · Unanimous Jury · ENAU, Université de Carthage · June 2024</p>
+<div class="flagship__links"><a class="go" href="projects/project-al-arg.html">Read the case study<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-right"></use></svg></a><a class="go" href="https://heyzine.com/flip-book/d04892dd54.html" target="_blank" rel="noopener">Read the thesis<span class="vh"> (opens in a new tab)</span><svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-up-right"></use></svg></a></div>
+</div>
+</div>
+<figure class="scales" data-draw>
+<ol class="scales__panels">
+<li style="--i: 0"><a class="scales__link" href="projects/project-al-arg.html#fig-territory">
+<span class="scales__frame" style="--native: 904px"><picture><source type="image/avif" srcset="images/opt/al-arg/scales-territorial-480.avif 480w, images/opt/al-arg/scales-territorial-800.avif 800w, images/opt/al-arg/scales-territorial-904.avif 904w" sizes="(min-width: 1600px) 480px, (min-width: 768px) calc(30vw - 12px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/al-arg/scales-territorial-480.webp 480w, images/opt/al-arg/scales-territorial-800.webp 800w, images/opt/al-arg/scales-territorial-904.webp 904w" sizes="(min-width: 1600px) 480px, (min-width: 768px) calc(30vw - 12px), calc(100vw - 32px)"><img src="images/opt/al-arg/scales-territorial.jpg" alt="Situation map of Al-Arg within the Jérid oasis system, southern Tunisia" width="904" height="647" loading="lazy" decoding="async"></picture><svg class="scales__line" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="100%" height="100%" pathLength="1"></rect></svg></span>
+<span class="scales__label"><span class="scales__no mono">01</span><span class="scales__name">Territorial</span><span class="scales__sub">Situation map</span></span>
+</a></li>
+<li style="--i: 1"><a class="scales__link" href="projects/project-al-arg.html#fig-plans-existing-and-project">
+<span class="scales__frame" style="--native: 391px"><picture><source type="image/avif" srcset="images/opt/al-arg/scales-urban-391.avif 391w" sizes="(min-width: 1600px) 480px, (min-width: 768px) calc(30vw - 12px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/al-arg/scales-urban-391.webp 391w" sizes="(min-width: 1600px) 480px, (min-width: 768px) calc(30vw - 12px), calc(100vw - 32px)"><img src="images/opt/al-arg/scales-urban.jpg" alt="Al-Arg site plan, rehabilitation proposal" width="391" height="261" loading="lazy" decoding="async"></picture><svg class="scales__line" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="100%" height="100%" pathLength="1"></rect></svg></span>
+<span class="scales__label"><span class="scales__no mono">02</span><span class="scales__name">Urban</span><span class="scales__sub">Site plan, rehabilitation proposal</span></span>
+</a></li>
+<li style="--i: 2"><a class="scales__link" href="projects/project-al-arg.html#fig-plans-existing-and-project">
+<span class="scales__frame" style="--native: 276px"><picture><source type="image/avif" srcset="images/opt/al-arg/scales-architectural-276.avif 276w" sizes="(min-width: 1600px) 480px, (min-width: 768px) calc(30vw - 12px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/al-arg/scales-architectural-276.webp 276w" sizes="(min-width: 1600px) 480px, (min-width: 768px) calc(30vw - 12px), calc(100vw - 32px)"><img src="images/opt/al-arg/scales-architectural.jpg" alt="Al-Arg ground floor plan, rehabilitation proposal" width="276" height="261" loading="lazy" decoding="async"></picture><svg class="scales__line" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="100%" height="100%" pathLength="1"></rect></svg></span>
+<span class="scales__label"><span class="scales__no mono">03</span><span class="scales__name">Architectural</span><span class="scales__sub">Ground floor, project</span></span>
+</a></li>
+</ol>
+<div class="scales__dim" aria-hidden="true"><i style="left: 0; --i: 0"></i><i style="left: calc(33.333% + var(--gap) / 3); --i: 1"></i><i style="left: calc(66.667% + var(--gap) * 2 / 3); --i: 2"></i><i style="left: calc(100% - 1px); --i: 3"></i></div>
+<figcaption class="scales__cap">The thesis operates at three scales simultaneously: a territorial analysis of the conditions that produced the abandonment, an urban proposal for the reactivation of the village as a place of memory, culture, and temporary dwelling, and an architectural intervention on a key building within the fabric.</figcaption>
+</figure>
+</div>
+</section>
 
-    <div class="cover-board" aria-label="Featured sections">
-      <a href="architecture.html" class="cover-card cover-card--architecture">
-        <img src="images/la-villette/thumb.jpg" alt="La Villette residential rehabilitation">
-        <span class="cover-card__text">
-          <span class="cover-card__tag">Architecture</span>
-          <span class="cover-card__title">Selected works</span>
-        </span>
-      </a>
-      <a href="motion.html" class="cover-card cover-card--motion">
-        <img src="images/motion/glitch-thumb.jpg" alt="Motion design still">
-        <span class="cover-card__text">
-          <span class="cover-card__tag">Motion</span>
-          <span class="cover-card__title">Moving image</span>
-        </span>
-      </a>
-      <a href="books.html" class="cover-card cover-card--research">
-        <img src="images/al-arg/thumb.jpg" alt="Al-Arg thesis project">
-        <span class="cover-card__text">
-          <span class="cover-card__tag">Research</span>
-          <span class="cover-card__title">Books / thesis</span>
-        </span>
-      </a>
-      <a href="about.html" class="cover-card cover-card--profile">
-        <span class="cover-card__tag">Profile</span>
-        <span class="cover-card__title">Architect between heritage, cities, and motion.</span>
-        <span class="cover-card__tag">Paris / Casablanca / Tokyo</span>
-      </a>
-    </div>
-  </section>
+<section class="section survey" aria-labelledby="survey-h">
+<div class="wrap">
+<div class="survey__head grid"><h2 class="col-annot" id="survey-h">Education and practice, 2018–2026</h2></div>
+<div class="survey__chart" data-draw>
+<div class="survey__grid" aria-hidden="true"></div>
+<div class="survey__axis mono" aria-hidden="true"><span style="--col: 1 / span 12">2018</span><span style="--col: 13 / span 12">2019</span><span style="--col: 25 / span 12">2020</span><span style="--col: 37 / span 12">2021</span><span style="--col: 49 / span 12">2022</span><span style="--col: 61 / span 12">2023</span><span style="--col: 73 / span 12">2024</span><span style="--col: 85 / span 12">2025</span><span style="--col: 97 / span 12">2026</span></div>
+<div class="survey__lanes mono" aria-hidden="true"><span style="--row: 1 / span 2">Education</span><span style="--row: 3 / span 2">Practice</span><span style="--row: 5 / span 2">Research and distinctions</span></div>
+<ol class="survey__list">
+<li class="ev ev--range" style="--col: 1 / 37; --row: 1; --label: 16rem"><a class="ev__link" href="about.html#education"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Education</span><time class="ev__date mono">2018 – 2020</time><span class="ev__title">First Cycle Diploma · Bachelor&#x27;s equivalent</span><span class="ev__sub">With Distinction</span></span></a></li>
+<li class="ev ev--range" style="--col: 25 / 49; --row: 3; --label: 18rem"><a class="ev__link" href="about.html#experience"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Practice</span><time class="ev__date mono">2020 – 2021</time><span class="ev__title">Société de Préservation du Village d&#x27;ARG · Tunisia</span><span class="ev__sub">Intern &amp; Volunteer</span></span></a></li>
+<li class="ev ev--range" style="--col: 61 / 73; --row: 4; --label: 15rem"><a class="ev__link" href="about.html#experience"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Practice</span><time class="ev__date mono">2023</time><span class="ev__title">2ADP Salim Ben Rejeb Architectes · Tunis</span><span class="ev__sub">Architectural Intern</span></span></a></li>
+<li class="ev ev--range" style="--col: 73 / 97; --row: 3; --label: 15rem"><a class="ev__link" href="about.html#experience"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Practice</span><time class="ev__date mono">2024 – 2025</time><span class="ev__title">Yassir Khalil Studio · Casablanca</span><span class="ev__sub">Architectural Intern · Full time</span></span></a></li>
+<li class="ev ev--point" style="--col: 78 / 79; --row: 1; --label: 13rem"><a class="ev__link" href="projects/project-al-arg.html"><span class="ev__dim" aria-hidden="true"><b></b></span><span class="ev__text"><span class="ev__lane mono">Education</span><time class="ev__date mono">June 2024</time><span class="ev__title">Final Year Architectural Thesis</span><span class="ev__sub">Highest Honours</span></span></a></li>
+<li class="ev ev--ongoing" style="--col: 85 / 109; --row: 4; --label: 15rem"><a class="ev__link" href="about.html#experience"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Practice</span><time class="ev__date mono">2025 – present</time><span class="ev__title">Studio BELEM · Paris</span><span class="ev__sub">Architectural Intern · Ongoing</span></span></a></li>
+<li class="ev ev--range" style="--col: 85 / 97; --row: 5; --label: 15rem"><a class="ev__link" href="books.html#sakura"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Research and distinctions</span><time class="ev__date mono">2025</time><span class="ev__title">Sakura Science Program · Japan</span><span class="ev__sub">Most Appreciated Research</span></span></a></li>
+<li class="ev ev--range" style="--col: 85 / 97; --row: 6; --label: 15rem"><a class="ev__link" href="projects/project-zenata.html"><span class="ev__dim" aria-hidden="true"><i></i></span><span class="ev__text"><span class="ev__lane mono">Research and distinctions</span><time class="ev__date mono">2025</time><span class="ev__title">2nd Place · Competition</span><span class="ev__sub">Zenata Station</span></span></a></li>
+<li class="ev ev--point ev--end" style="--col: 80 / 99; --row: 2; --label: 13rem"><a class="ev__link" href="about.html#education"><span class="ev__dim" aria-hidden="true"><b></b></span><span class="ev__text"><span class="ev__lane mono">Education</span><time class="ev__date mono">Feb. 2026</time><span class="ev__title">National Architecture Diploma (DNA) · Master&#x27;s equivalent</span><span class="ev__sub">Highest Honours</span></span></a></li>
+</ol>
+</div>
+</div>
+</section>
 
-  <nav class="cover-index" aria-label="Portfolio index">
-    <a href="architecture.html" class="cover-link cover-link--accent">
-      <span class="cover-link__label">01 / Work</span>
-      <strong>Architecture index</strong>
-    </a>
-    <a href="motion.html" class="cover-link">
-      <span class="cover-link__label">02 / Motion</span>
-      <strong>Films and graphic motion</strong>
-    </a>
-    <a href="books.html" class="cover-link">
-      <span class="cover-link__label">03 / Research</span>
-      <strong>Books, thesis, reports</strong>
-    </a>
-    <a href="about.html#contact" class="cover-link">
-      <span class="cover-link__label">04 / Contact</span>
-      <strong>Start a conversation</strong>
-    </a>
-  </nav>
+<section class="section" aria-labelledby="work-h">
+<div class="wrap">
+<div class="section__head grid"><h2 class="col-annot" id="work-h">Selected work</h2></div>
+<ul class="works">
+<li><a class="work__link" href="projects/project-la-villette.html">
+<span class="work__plate plate" style="--native: 599px"><picture><source type="image/avif" srcset="images/opt/la-villette/thumb-160.avif 160w, images/opt/la-villette/thumb-320.avif 320w, images/opt/la-villette/thumb-480.avif 480w, images/opt/la-villette/thumb-599.avif 599w" sizes="(min-width: 1600px) 606px, (min-width: 768px) calc(38vw - 12px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/la-villette/thumb-160.webp 160w, images/opt/la-villette/thumb-320.webp 320w, images/opt/la-villette/thumb-480.webp 480w, images/opt/la-villette/thumb-599.webp 599w" sizes="(min-width: 1600px) 606px, (min-width: 768px) calc(38vw - 12px), calc(100vw - 32px)"><img src="images/la-villette/thumb.jpg" alt="La Villette, residential rehabilitation, Paris" width="599" height="755" loading="lazy" decoding="async"></picture></span>
+<span class="work__meta"><span class="work__title vt" style="view-transition-name: t-la-villette">La Villette</span><span class="work__sub mono">Residential Rehabilitation · Paris · 2025–2026</span></span>
+</a></li>
+<li><a class="work__link" href="projects/project-zenata.html">
+<span class="work__plate plate" style="--native: 2000px"><picture><source type="image/avif" srcset="images/opt/zenata/thumb-160.avif 160w, images/opt/zenata/thumb-320.avif 320w, images/opt/zenata/thumb-480.avif 480w, images/opt/zenata/thumb-800.avif 800w, images/opt/zenata/thumb-1200.avif 1200w, images/opt/zenata/thumb-1600.avif 1600w, images/opt/zenata/thumb-2000.avif 2000w" sizes="(min-width: 1600px) 859px, (min-width: 768px) calc(53vw - 14px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/zenata/thumb-160.webp 160w, images/opt/zenata/thumb-320.webp 320w, images/opt/zenata/thumb-480.webp 480w, images/opt/zenata/thumb-800.webp 800w, images/opt/zenata/thumb-1200.webp 1200w, images/opt/zenata/thumb-1600.webp 1600w, images/opt/zenata/thumb-2000.webp 2000w" sizes="(min-width: 1600px) 859px, (min-width: 768px) calc(53vw - 14px), calc(100vw - 32px)"><img src="images/zenata/thumb.jpg" alt="Zenata Station, regional rail station, Casablanca" width="2000" height="1340" loading="lazy" decoding="async"></picture></span>
+<span class="work__meta"><span class="work__title vt" style="view-transition-name: t-zenata">Zenata Station</span><span class="work__sub mono">Regional Rail Station · Casablanca · 2025</span></span>
+</a></li>
+<li><a class="work__link" href="projects/project-corallum.html">
+<span class="work__plate plate" style="--native: 1134px"><picture><source type="image/avif" srcset="images/opt/corallum/thumb-160.avif 160w, images/opt/corallum/thumb-320.avif 320w, images/opt/corallum/thumb-480.avif 480w, images/opt/corallum/thumb-800.avif 800w, images/opt/corallum/thumb-1134.avif 1134w" sizes="(min-width: 1600px) 859px, (min-width: 768px) calc(53vw - 14px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/corallum/thumb-160.webp 160w, images/opt/corallum/thumb-320.webp 320w, images/opt/corallum/thumb-480.webp 480w, images/opt/corallum/thumb-800.webp 800w, images/opt/corallum/thumb-1134.webp 1134w" sizes="(min-width: 1600px) 859px, (min-width: 768px) calc(53vw - 14px), calc(100vw - 32px)"><img src="images/corallum/thumb.jpg" alt="Corallum, coral research and exhibition centre, Tunisia" width="1134" height="993" loading="lazy" decoding="async"></picture></span>
+<span class="work__meta"><span class="work__title vt" style="view-transition-name: t-corallum">Corallum</span><span class="work__sub mono">Research and Exhibition Centre · Tunisia · 2023</span></span>
+</a></li>
+<li><a class="work__link" href="projects/project-belhomme.html">
+<span class="work__plate plate" style="--native: 574px"><picture><source type="image/avif" srcset="images/opt/belhomme/thumb-160.avif 160w, images/opt/belhomme/thumb-320.avif 320w, images/opt/belhomme/thumb-480.avif 480w, images/opt/belhomme/thumb-574.avif 574w" sizes="(min-width: 1600px) 606px, (min-width: 768px) calc(38vw - 12px), calc(100vw - 32px)"><source type="image/webp" srcset="images/opt/belhomme/thumb-160.webp 160w, images/opt/belhomme/thumb-320.webp 320w, images/opt/belhomme/thumb-480.webp 480w, images/opt/belhomme/thumb-574.webp 574w" sizes="(min-width: 1600px) 606px, (min-width: 768px) calc(38vw - 12px), calc(100vw - 32px)"><img src="images/belhomme/thumb.jpg" alt="Belhomme, corner residential rehabilitation, Paris" width="574" height="770" loading="lazy" decoding="async"></picture></span>
+<span class="work__meta"><span class="work__title vt" style="view-transition-name: t-belhomme">Belhomme</span><span class="work__sub mono">Residential Rehabilitation · Paris · 2025–2026</span></span>
+</a></li>
+</ul>
+<p class="works__more"><a class="go" href="architecture.html">All 12 projects<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-right"></use></svg></a></p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="research-h">
+<div class="wrap grid">
+<h2 class="col-annot" id="research-h">Research</h2>
+<div class="col-main">
+<ul class="pubs pubs--teaser">
+<li>
+<p class="pub__tag mono">2025 · Most Appreciated Research</p>
+<h3 class="pub__title">Sakura Science Program · Japan</h3>
+<p class="pub__sub">Saga University &amp; Waseda University · Invited researcher · Sole Tunisian representative</p>
+<p class="prose muted">Competitive international selection, Japanese government-funded. Intensive workshops on historic district rehabilitation and adaptive reuse. Comparative analysis: North African medinas and Japanese machiya, focused on spatial identity and heritage resilience.</p>
+<p><a class="go" href="books.html#sakura">Research programme<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-right"></use></svg></a></p>
+</li>
+<li>
+<p class="pub__tag mono">Professional · Report · 2026</p>
+<h3 class="pub__title">Internship Report</h3>
+<p class="pub__sub">Professional practice across Paris, Casablanca, and Tokyo</p>
+<p><a class="go" href="books.html#report">About the report<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-right"></use></svg></a></p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="contact-h">
+<div class="wrap grid">
+<h2 class="col-annot" id="contact-h">Contact</h2>
+<div class="col-main">
+<div class="contact-block__links"><a href="mailto:hazemradhouani@gmail.com">hazemradhouani@gmail.com</a><a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span><svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-up-right"></use></svg></a></div>
+<p class="contact-block__more"><a class="go" href="about.html#contact">Write a message<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#arrow-right"></use></svg></a></p>
+</div>
+</div>
+</section>
 </main>
+<footer class="site-footer">
+<div class="wrap site-footer__grid">
+<div class="site-footer__cell site-footer__id">
+<p class="site-footer__name">Hazem Radhouani</p>
+<p>Architect specialising in heritage documentation and earthen architecture.</p>
+</div>
+<nav class="site-footer__cell site-footer__pages" aria-label="Footer">
+<span class="site-footer__label mono">Pages</span>
+<ul><li><a href="architecture.html">Work</a></li><li><a href="books.html">Research</a></li><li><a href="about.html">About</a></li><li><a href="motion.html">Motion</a></li></ul>
+</nav>
+<div class="site-footer__cell site-footer__contact">
+<span class="site-footer__label mono">Contact</span>
+<ul><li><a href="mailto:hazemradhouani@gmail.com">hazemradhouani@gmail.com</a></li><li><a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a></li></ul>
+</div>
+<div class="site-footer__cell site-footer__legal">
+<span class="site-footer__label mono">Colophon</span>
+<p>&copy; 2026 Hazem Radhouani</p>
+<p class="site-footer__legal-note">Set in Archivo and IBM Plex Mono.</p>
+</div>
+</div>
+</footer>
+<dialog class="menu" id="menu" aria-label="Site menu">
+<div class="wrap">
+<div class="menu__bar">
+<a class="brand" href="./"><span class="brand__name">Hazem Radhouani</span><span class="brand__role">Architect</span></a>
+<form method="dialog"><button class="menu__close" type="submit" autofocus>Close<svg class="icon" aria-hidden="true" focusable="false"><use href="images/icons.svg#x"></use></svg></button></form>
+</div>
+<nav aria-label="Main"><ul class="menu__list"><li><a href="architecture.html">Work</a></li><li><a href="books.html">Research</a></li><li><a href="about.html">About</a></li><li><a href="motion.html">Motion</a></li><li><a href="about.html#contact">Contact</a></li></ul></nav>
+<p class="menu__contact"><a href="mailto:hazemradhouani@gmail.com">hazemradhouani@gmail.com</a><a href="https://www.linkedin.com/in/hazem-radhouani-b36616319/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a></p>
+</div>
+</dialog>
 </body>
 </html>
